@@ -1,0 +1,191 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$	.tags	/^Ero2ProfileManager	ero2\/identification\/Ero2ProfileManager.java	\/^public class Ero2ProfileManager {$\/;"	c$/;"	f	class:Ero2ProfileManager
+$	.tags	/^conn	ero2\/identification\/Ero2ProfileManager.java	\/^	Connection conn;$\/;"	f	class:Ero2ProfileManager$/;"	f	class:Ero2ProfileManager
+COAPClient	ero2/transport/coap/COAPClient.java	/^	public class COAPClient  {$/;"	c
+COAPENDPOINT	ero2/core/ErO2Server.java	/^	private LocalEndpoint COAPENDPOINT;$/;"	f	class:ErO2Server	file:
+COAPENDPOINT	ero2/resource/rest/ServiceRegistryResource.java	/^	private COAPEndPoint COAPENDPOINT;$/;"	f	class:ServiceRegistryResource	file:
+COAPEndPoint	ero2/transport/coap/COAPEndPoint.java	/^	public COAPEndPoint() throws SocketException {$/;"	m	class:COAPEndPoint
+COAPEndPoint	ero2/transport/coap/COAPEndPoint.java	/^public class COAPEndPoint extends ServerEndpoint {$/;"	c
+COAPPORT	ero2/transport/coap/COAPClient.java	/^		public static final String COAPPORT = "5683";$/;"	f	class:COAPClient
+COMMA	ero2/core/ErO2Service.java	/^	public static String COMMA = ",";$/;"	f	class:ErO2Service
+DATA_RATE	ero2/util/NFCListner.java	/^	private static final int DATA_RATE = 38400;$/;"	f	class:NFCListner	file:
+DELIMITER	ero2/core/ErO2Service.java	/^	public static String DELIMITER = "|";$/;"	f	class:ErO2Service
+DISCOVERY_RESOURCE	ero2/transport/coap/COAPClient.java	/^		private static final String DISCOVERY_RESOURCE = "\/.well-known\/core";$/;"	f	class:COAPClient	file:
+ERO2REGISTRY	ero2/identification/Ero2ProfileManager.java	/^	ErO2Registry ERO2REGISTRY;$/;"	f	class:Ero2ProfileManager
+ERO2REGISTRY	ero2/resource/rest/ErO2RestMediatorResource.java	/^	ErO2Registry ERO2REGISTRY;$/;"	f	class:ErO2RestMediatorResource
+ERO2REGISTRY	ero2/resource/rest/ErO2RestMonitorResource.java	/^	ErO2Registry ERO2REGISTRY;$/;"	f	class:ErO2RestMonitorResource
+ERO2REGISTRY	ero2/resource/rest/ErO2RestRegistryResource.java	/^	ErO2Registry ERO2REGISTRY;$/;"	f	class:ErO2RestRegistryResource
+ERO2REGISTRY	ero2/resource/rest/SensorResource.java	/^	ErO2Registry ERO2REGISTRY = ErO2Registry.getInstance();$/;"	f	class:SensorResource
+ERO2REGISTRY	ero2/resource/rest/ServiceMonitorResource.java	/^	private ErO2Registry ERO2REGISTRY;$/;"	f	class:ServiceMonitorResource	file:
+ERO2REGISTRY	ero2/resource/rest/ServiceRegistryResource.java	/^	private ErO2Registry ERO2REGISTRY;$/;"	f	class:ServiceRegistryResource	file:
+ERR_BAD_LINK_FORMAT	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_BAD_LINK_FORMAT = 7;$/;"	f	class:COAPClient	file:
+ERR_BAD_URI	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_BAD_URI         = 4;$/;"	f	class:COAPClient	file:
+ERR_MISSING_METHOD	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_MISSING_METHOD  = 1;$/;"	f	class:COAPClient	file:
+ERR_MISSING_URI	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_MISSING_URI     = 3;$/;"	f	class:COAPClient	file:
+ERR_REQUEST_FAILED	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_REQUEST_FAILED  = 5;$/;"	f	class:COAPClient	file:
+ERR_RESPONSE_FAILED	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_RESPONSE_FAILED = 6;$/;"	f	class:COAPClient	file:
+ERR_UNKNOWN_METHOD	ero2/transport/coap/COAPClient.java	/^		private static final int ERR_UNKNOWN_METHOD  = 2;$/;"	f	class:COAPClient	file:
+ErO2JSON	ero2/util/ErO2JSON.java	/^public class ErO2JSON {$/;"	c
+ErO2Registry	ero2/core/ErO2Registry.java	/^	private ErO2Registry(){$/;"	m	class:ErO2Registry	file:
+ErO2Registry	ero2/core/ErO2Registry.java	/^public final class ErO2Registry {$/;"	c
+ErO2Resource	ero2/core/ErO2Resource.java	/^	public ErO2Resource(String name,String uri,String requestMethod, String queryString){$/;"	m	class:ErO2Resource
+ErO2Resource	ero2/core/ErO2Resource.java	/^public class ErO2Resource {$/;"	c
+ErO2RestMediatorResource	ero2/resource/rest/ErO2RestMediatorResource.java	/^	public ErO2RestMediatorResource() {$/;"	m	class:ErO2RestMediatorResource
+ErO2RestMediatorResource	ero2/resource/rest/ErO2RestMediatorResource.java	/^public class ErO2RestMediatorResource extends ServerResource {$/;"	c
+ErO2RestMonitorResource	ero2/resource/rest/ErO2RestMonitorResource.java	/^	public ErO2RestMonitorResource(){$/;"	m	class:ErO2RestMonitorResource
+ErO2RestMonitorResource	ero2/resource/rest/ErO2RestMonitorResource.java	/^public class ErO2RestMonitorResource extends ServerResource {$/;"	c
+ErO2RestProfileResource	ero2/resource/rest/ErO2RestProfileResource.java	/^	public ErO2RestProfileResource(){$/;"	m	class:ErO2RestProfileResource
+ErO2RestProfileResource	ero2/resource/rest/ErO2RestProfileResource.java	/^public class ErO2RestProfileResource extends ServerResource {$/;"	c
+ErO2RestRegistryResource	ero2/resource/rest/ErO2RestRegistryResource.java	/^	public ErO2RestRegistryResource(){$/;"	m	class:ErO2RestRegistryResource
+ErO2RestRegistryResource	ero2/resource/rest/ErO2RestRegistryResource.java	/^public class ErO2RestRegistryResource extends ServerResource {$/;"	c
+ErO2Server	ero2/core/ErO2Server.java	/^public class ErO2Server {$/;"	c
+ErO2Service	ero2/core/ErO2Service.java	/^	public ErO2Service() {$/;"	m	class:ErO2Service
+ErO2Service	ero2/core/ErO2Service.java	/^	public ErO2Service(String ipaddr) {$/;"	m	class:ErO2Service
+ErO2Service	ero2/core/ErO2Service.java	/^public class ErO2Service {$/;"	c
+ErO2ServiceStatus	ero2/core/ErO2ServiceStatus.java	/^public class ErO2ServiceStatus {$/;"	c
+ErO2UserProfile	ero2/identification/ErO2UserProfile.java	/^public class ErO2UserProfile {$/;"	c
+ErO2Utils	ero2/transport/coap/ErO2Utils.java	/^public class ErO2Utils {$/;"	c
+Ero2Common	ero2/util/Ero2Common.java	/^public class Ero2Common {$/;"	c
+Ero2ProfileManager	.tags	/^Ero2ProfileManager	ero2\/identification\/Ero2ProfileManager.java	\/^public class Ero2ProfileManager {$\/;"	c$/;"	c
+Ero2ProfileManager	ero2/identification/Ero2ProfileManager.java	/^	public Ero2ProfileManager() {$/;"	m	class:Ero2ProfileManager
+Ero2ProfileManager	ero2/identification/Ero2ProfileManager.java	/^public class Ero2ProfileManager {$/;"	c
+HTTPENDPOINT	ero2/core/ErO2Server.java	/^	private HTTPEndPoint HTTPENDPOINT;$/;"	f	class:ErO2Server	file:
+HTTPEndPoint	ero2/transport/http/HTTPEndPoint.java	/^public class HTTPEndPoint {$/;"	c
+HTTPEndPointProxy	ero2/transport/http/HTTPEndPointProxy.java	/^public class HTTPEndPointProxy extends Application {$/;"	c
+NFCListner	ero2/util/NFCListner.java	/^public class NFCListner implements SerialPortEventListener {$/;"	c
+NFC_ID	ero2/identification/ErO2UserProfile.java	/^	private String NFC_ID;$/;"	f	class:ErO2UserProfile	file:
+NULL	ero2/core/ErO2Service.java	/^	public static String NULL = "(null)";$/;"	f	class:ErO2Service
+PORT_NAMES	ero2/util/NFCListner.java	/^	private static final String PORT_NAMES[] = { "\/dev\/tty.usbserial-A9007UX1", \/\/ Mac$/;"	f	class:NFCListner	file:
+REGISTRATION_FAILED	ero2/transport/coap/ErO2Utils.java	/^	public static String REGISTRATION_FAILED = "101";$/;"	f	class:ErO2Utils
+REGISTRATION_SUCCESSFUL	ero2/transport/coap/ErO2Utils.java	/^	public static String REGISTRATION_SUCCESSFUL = "100";$/;"	f	class:ErO2Utils
+REREGISTRATION_REQUIRED	ero2/transport/coap/ErO2Utils.java	/^	public static String REREGISTRATION_REQUIRED = "102";$/;"	f	class:ErO2Utils
+SensorResource	ero2/resource/rest/SensorResource.java	/^	public SensorResource() {$/;"	m	class:SensorResource
+SensorResource	ero2/resource/rest/SensorResource.java	/^	public SensorResource(String custom, String title, String rt) {$/;"	m	class:SensorResource
+SensorResource	ero2/resource/rest/SensorResource.java	/^public class SensorResource extends LocalResource {$/;"	c
+ServiceMonitorResource	ero2/resource/rest/ServiceMonitorResource.java	/^	public ServiceMonitorResource() {$/;"	m	class:ServiceMonitorResource
+ServiceMonitorResource	ero2/resource/rest/ServiceMonitorResource.java	/^	public ServiceMonitorResource(String custom, String title, String rt) {$/;"	m	class:ServiceMonitorResource
+ServiceMonitorResource	ero2/resource/rest/ServiceMonitorResource.java	/^public class ServiceMonitorResource extends LocalResource {$/;"	c
+ServiceRegistryResource	ero2/resource/rest/ServiceRegistryResource.java	/^	public ServiceRegistryResource() {$/;"	m	class:ServiceRegistryResource
+ServiceRegistryResource	ero2/resource/rest/ServiceRegistryResource.java	/^	public ServiceRegistryResource(String custom, String title, String rt) {$/;"	m	class:ServiceRegistryResource
+ServiceRegistryResource	ero2/resource/rest/ServiceRegistryResource.java	/^public class ServiceRegistryResource extends LocalResource {$/;"	c
+TIME_OUT	ero2/util/NFCListner.java	/^	private static final int TIME_OUT = 1000;$/;"	f	class:NFCListner	file:
+activateAdvanced	ero2/identification/Ero2ProfileManager.java	/^	private void activateAdvanced(Vector<ErO2Service> services) {$/;"	m	class:Ero2ProfileManager	file:
+activateBasic	ero2/identification/Ero2ProfileManager.java	/^	private boolean activateBasic(Vector<ErO2Service> services, String group) {$/;"	m	class:Ero2ProfileManager	file:
+activateProfile	.tags	/^activateProfile	ero2\/identification\/Ero2ProfileManager.java	\/^	public void activateProfile(String profileID) {$\/;"	m	class:Ero2ProfileManager$/;"	m	class:Ero2ProfileManager
+activateProfile	ero2/identification/Ero2ProfileManager.java	/^	public void activateProfile(String profileID) {$/;"	m	class:Ero2ProfileManager
+addProfile	ero2/resource/rest/ErO2RestProfileResource.java	/^	public String addProfile(){$/;"	m	class:ErO2RestProfileResource
+addResource	ero2/core/ErO2Service.java	/^	public void addResource(ErO2Resource resource) {$/;"	m	class:ErO2Service
+allServices	ero2/core/ErO2Registry.java	/^	public Hashtable<String, ErO2Service> allServices(){$/;"	m	class:ErO2Registry
+callService	ero2/resource/rest/ErO2RestMediatorResource.java	/^	public String callService() {$/;"	m	class:ErO2RestMediatorResource
+close	ero2/util/NFCListner.java	/^	public synchronized void close() {$/;"	m	class:NFCListner
+conn	.tags	/^conn	ero2\/identification\/Ero2ProfileManager.java	\/^	Connection conn;$\/;"	f	class:Ero2ProfileManager$/;"	f	class:Ero2ProfileManager
+conn	ero2/identification/Ero2ProfileManager.java	/^	Connection conn;$/;"	f	class:Ero2ProfileManager
+conn	ero2/resource/rest/ErO2RestProfileResource.java	/^	private Connection conn;$/;"	f	class:ErO2RestProfileResource	file:
+createInboundRoot	ero2/transport/http/HTTPEndPointProxy.java	/^    public Restlet createInboundRoot() {$/;"	m	class:HTTPEndPointProxy
+deactivateBasic	ero2/identification/Ero2ProfileManager.java	/^	private boolean deactivateBasic(Vector<ErO2Service> services, String group) {$/;"	m	class:Ero2ProfileManager	file:
+doRequest	ero2/transport/coap/COAPClient.java	/^		public String doRequest(String requestURI,String requestMethod, String payload) {$/;"	m	class:COAPClient
+ero2.core	ero2/core/ErO2Registry.java	/^package ero2.core;$/;"	p
+ero2.core	ero2/core/ErO2Resource.java	/^package ero2.core;$/;"	p
+ero2.core	ero2/core/ErO2Server.java	/^package ero2.core;$/;"	p
+ero2.core	ero2/core/ErO2Service.java	/^package ero2.core;$/;"	p
+ero2.core	ero2/core/ErO2ServiceStatus.java	/^package ero2.core;$/;"	p
+ero2.identification	ero2/identification/ErO2UserProfile.java	/^package ero2.identification;$/;"	p
+ero2.identification	ero2/identification/Ero2ProfileManager.java	/^package ero2.identification;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ErO2RestMediatorResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ErO2RestMonitorResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ErO2RestProfileResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ErO2RestRegistryResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/SensorResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ServiceMonitorResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.resource.rest	ero2/resource/rest/ServiceRegistryResource.java	/^package ero2.resource.rest;$/;"	p
+ero2.transport.coap	ero2/transport/coap/COAPClient.java	/^package ero2.transport.coap;$/;"	p
+ero2.transport.coap	ero2/transport/coap/COAPEndPoint.java	/^package ero2.transport.coap;$/;"	p
+ero2.transport.coap	ero2/transport/coap/ErO2Utils.java	/^package ero2.transport.coap;$/;"	p
+ero2.transport.http	ero2/transport/http/HTTPEndPoint.java	/^package ero2.transport.http;$/;"	p
+ero2.transport.http	ero2/transport/http/HTTPEndPointProxy.java	/^package ero2.transport.http;$/;"	p
+ero2.util	ero2/util/ErO2JSON.java	/^package ero2.util;$/;"	p
+ero2.util	ero2/util/Ero2Common.java	/^package ero2.util;$/;"	p
+ero2.util	ero2/util/NFCListner.java	/^package ero2.util;$/;"	p
+getIPAddr	ero2/core/ErO2ServiceStatus.java	/^	public String getIPAddr(){$/;"	m	class:ErO2ServiceStatus
+getIPAddress	ero2/core/ErO2Service.java	/^	public String getIPAddress() {$/;"	m	class:ErO2Service
+getInstance	ero2/core/ErO2Registry.java	/^	public static ErO2Registry getInstance(){$/;"	m	class:ErO2Registry
+getLight	ero2/identification/ErO2UserProfile.java	/^	public String getLight(){$/;"	m	class:ErO2UserProfile
+getMethod	ero2/core/ErO2Resource.java	/^	public String getMethod(){$/;"	m	class:ErO2Resource
+getNFCID	ero2/identification/ErO2UserProfile.java	/^	public String getNFCID(){$/;"	m	class:ErO2UserProfile
+getName	ero2/core/ErO2Resource.java	/^	public String getName(){$/;"	m	class:ErO2Resource
+getProfile	ero2/identification/Ero2ProfileManager.java	/^	private ErO2UserProfile getProfile(String profileID) {$/;"	m	class:Ero2ProfileManager	file:
+getProfile	ero2/resource/rest/ErO2RestProfileResource.java	/^	public String getProfile() {$/;"	m	class:ErO2RestProfileResource
+getQueryParameters	ero2/core/ErO2Resource.java	/^	public String getQueryParameters(){$/;"	m	class:ErO2Resource
+getReadings	ero2/core/ErO2ServiceStatus.java	/^	public Hashtable<String, String> getReadings(){$/;"	m	class:ErO2ServiceStatus
+getResourceByName	ero2/core/ErO2Service.java	/^	public ErO2Resource getResourceByName(String resourceName) {$/;"	m	class:ErO2Service
+getResources	ero2/core/ErO2Service.java	/^	public Vector<ErO2Resource> getResources() {$/;"	m	class:ErO2Service
+getSensorGroupID	ero2/identification/ErO2UserProfile.java	/^	public String getSensorGroupID(){$/;"	m	class:ErO2UserProfile
+getSerialization	ero2/core/ErO2Service.java	/^	public String getSerialization() {$/;"	m	class:ErO2Service
+getServices	ero2/resource/rest/ErO2RestRegistryResource.java	/^	public String getServices() {$/;"	m	class:ErO2RestRegistryResource
+getServicesJSONString	ero2/util/ErO2JSON.java	/^	public static String getServicesJSONString($/;"	m	class:ErO2JSON
+getStatus	ero2/identification/ErO2UserProfile.java	/^	public int getStatus(){$/;"	m	class:ErO2UserProfile
+getTemp	ero2/identification/ErO2UserProfile.java	/^	public String getTemp(){$/;"	m	class:ErO2UserProfile
+getURI	ero2/core/ErO2Resource.java	/^	public String getURI(){$/;"	m	class:ErO2Resource
+getURI	ero2/resource/rest/ErO2RestMediatorResource.java	/^	private String getURI(ErO2Service service, String resourceName,$/;"	m	class:ErO2RestMediatorResource	file:
+getURI	ero2/resource/rest/SensorResource.java	/^	private String getURI(ErO2Service service, String resourceName,$/;"	m	class:SensorResource	file:
+getURI	ero2/util/Ero2Common.java	/^	public static String getURI(ErO2Service service, String resourceName,$/;"	m	class:Ero2Common
+getUpdate	ero2/core/ErO2Registry.java	/^	public ErO2ServiceStatus getUpdate(String serviceLocator){$/;"	m	class:ErO2Registry
+getUpdate	ero2/resource/rest/ErO2RestMonitorResource.java	/^	public String getUpdate() {$/;"	m	class:ErO2RestMonitorResource
+getUpdatesJSONString	ero2/util/ErO2JSON.java	/^	public static String getUpdatesJSONString(String serviceLocator,$/;"	m	class:ErO2JSON
+getWindow	ero2/identification/ErO2UserProfile.java	/^	public String getWindow(){$/;"	m	class:ErO2UserProfile
+handleRequest	ero2/transport/coap/COAPEndPoint.java	/^	public void handleRequest(Request request) {$/;"	m	class:COAPEndPoint
+initListners	ero2/core/ErO2Server.java	/^	private boolean initListners(){$/;"	m	class:ErO2Server	file:
+initialize	ero2/util/NFCListner.java	/^	public void initialize() {$/;"	m	class:NFCListner
+instance	ero2/core/ErO2Registry.java	/^	private static final ErO2Registry instance= new ErO2Registry();$/;"	f	class:ErO2Registry	file:
+ipaddr	ero2/core/ErO2Service.java	/^	String ipaddr;$/;"	f	class:ErO2Service
+ipaddr	ero2/core/ErO2ServiceStatus.java	/^	String ipaddr;$/;"	f	class:ErO2ServiceStatus
+luminocity	ero2/identification/ErO2UserProfile.java	/^	private String luminocity;$/;"	f	class:ErO2UserProfile	file:
+main	ero2/core/ErO2Server.java	/^	public static void main(String args[]){$/;"	m	class:ErO2Server
+monitor	ero2/core/ErO2Registry.java	/^	private Hashtable<String, ErO2ServiceStatus> monitor;$/;"	f	class:ErO2Registry	file:
+name	ero2/core/ErO2Resource.java	/^	private String name;$/;"	f	class:ErO2Resource	file:
+newRequest	ero2/transport/coap/COAPClient.java	/^		private static Request newRequest(String method) {$/;"	m	class:COAPClient	file:
+output	ero2/util/NFCListner.java	/^	private OutputStream output;$/;"	f	class:NFCListner	file:
+parseMessage	ero2/resource/rest/ServiceRegistryResource.java	/^	private boolean parseMessage(String ipaddr,String payloadString){$/;"	m	class:ServiceRegistryResource	file:
+performGET	ero2/resource/rest/SensorResource.java	/^	public void performGET(GETRequest request) {$/;"	m	class:SensorResource
+performPOST	ero2/resource/rest/ServiceMonitorResource.java	/^	public void performPOST(POSTRequest request) {$/;"	m	class:ServiceMonitorResource
+performPOST	ero2/resource/rest/ServiceRegistryResource.java	/^	public void performPOST(POSTRequest request) {$/;"	m	class:ServiceRegistryResource
+queryString	ero2/core/ErO2Resource.java	/^	private String queryString;$/;"	f	class:ErO2Resource	file:
+readings	ero2/core/ErO2ServiceStatus.java	/^	Hashtable<String, String> readings = new Hashtable<String, String>();$/;"	f	class:ErO2ServiceStatus
+registerService	ero2/core/ErO2Registry.java	/^	public void  registerService(String servicePointer,ErO2Service service){$/;"	m	class:ErO2Registry
+registry	ero2/core/ErO2Registry.java	/^	private Hashtable<String, ErO2Service> registry;$/;"	f	class:ErO2Registry	file:
+removeResource	ero2/core/ErO2Service.java	/^	public void removeResource(ErO2Resource resource) {$/;"	m	class:ErO2Service
+requestMethod	ero2/core/ErO2Resource.java	/^	private String requestMethod;$/;"	f	class:ErO2Resource	file:
+resources	ero2/core/ErO2Service.java	/^	Vector<ErO2Resource> resources = new Vector<ErO2Resource>();$/;"	f	class:ErO2Service
+searchService	ero2/core/ErO2Registry.java	/^	public ErO2Service searchService(String serviceLocator){$/;"	m	class:ErO2Registry
+searchServiceGroup	ero2/core/ErO2Registry.java	/^	public Vector<ErO2Service> searchServiceGroup(String groupID){$/;"	m	class:ErO2Registry
+sendSingleByte	ero2/util/NFCListner.java	/^	public void sendSingleByte(byte myByte) {$/;"	m	class:NFCListner
+sensor_group_id	ero2/identification/ErO2UserProfile.java	/^	private String sensor_group_id;$/;"	f	class:ErO2UserProfile	file:
+serialEvent	ero2/util/NFCListner.java	/^	public synchronized void serialEvent(SerialPortEvent oEvent) {$/;"	m	class:NFCListner
+serialPort	ero2/util/NFCListner.java	/^	SerialPort serialPort;$/;"	f	class:NFCListner
+serializeRegistry	ero2/resource/rest/ErO2RestRegistryResource.java	/^	private String serializeRegistry(){$/;"	m	class:ErO2RestRegistryResource	file:
+serializeUpdate	ero2/resource/rest/ErO2RestMonitorResource.java	/^	private String serializeUpdate(String serviceLocator){$/;"	m	class:ErO2RestMonitorResource	file:
+setCOAPEndPoint	ero2/resource/rest/ServiceRegistryResource.java	/^	public void setCOAPEndPoint(COAPEndPoint coapep){$/;"	m	class:ServiceRegistryResource
+setIPAddr	ero2/core/ErO2ServiceStatus.java	/^	public void setIPAddr(String ipaddr){$/;"	m	class:ErO2ServiceStatus
+setLight	ero2/identification/ErO2UserProfile.java	/^	public void setLight(String luminocity){$/;"	m	class:ErO2UserProfile
+setMethod	ero2/core/ErO2Resource.java	/^	public void setMethod(String method){$/;"	m	class:ErO2Resource
+setNFCID	ero2/identification/ErO2UserProfile.java	/^	public void setNFCID(String NFC_ID){$/;"	m	class:ErO2UserProfile
+setName	ero2/core/ErO2Resource.java	/^	public void setName(String name){$/;"	m	class:ErO2Resource
+setQueryParameters	ero2/core/ErO2Resource.java	/^	public void setQueryParameters(String queryParameters){$/;"	m	class:ErO2Resource
+setReading	ero2/core/ErO2ServiceStatus.java	/^	public void setReading(String key, String value){$/;"	m	class:ErO2ServiceStatus
+setSensorGroupID	ero2/identification/ErO2UserProfile.java	/^	public void setSensorGroupID(String sensor_group_id){$/;"	m	class:ErO2UserProfile
+setStatus	ero2/identification/ErO2UserProfile.java	/^	public void setStatus(int status){$/;"	m	class:ErO2UserProfile
+setTemp	ero2/identification/ErO2UserProfile.java	/^	public void setTemp(String tempurature){$/;"	m	class:ErO2UserProfile
+setURI	ero2/core/ErO2Resource.java	/^	public void setURI(String uri){$/;"	m	class:ErO2Resource
+setWindow	ero2/identification/ErO2UserProfile.java	/^	public void setWindow(String window){$/;"	m	class:ErO2UserProfile
+startHTTPListner	ero2/transport/http/HTTPEndPoint.java	/^	public boolean startHTTPListner(){$/;"	m	class:HTTPEndPoint
+status	ero2/identification/ErO2UserProfile.java	/^	private int status;$/;"	f	class:ErO2UserProfile	file:
+tempurature	ero2/identification/ErO2UserProfile.java	/^	private String tempurature;$/;"	f	class:ErO2UserProfile	file:
+updateProfileStatus	ero2/identification/Ero2ProfileManager.java	/^	public void updateProfileStatus(String profileID, int status) {$/;"	m	class:Ero2ProfileManager
+updateStatus	ero2/core/ErO2Registry.java	/^	public void updateStatus(String serviceLocator, ErO2ServiceStatus status){$/;"	m	class:ErO2Registry
+uri	ero2/core/ErO2Resource.java	/^	private String uri;$/;"	f	class:ErO2Resource	file:
+window	ero2/identification/ErO2UserProfile.java	/^	private String window;$/;"	f	class:ErO2UserProfile	file:
