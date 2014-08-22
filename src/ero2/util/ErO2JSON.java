@@ -38,7 +38,8 @@ public class ErO2JSON {
           resourceJSON = new JSONObject();
           resourceJSON.put("name", ero2Resource.getName());
           resourceJSON.put("method", ero2Resource.getMethod());
-          resourceJSON.put("uri", ero2Resource.getURI());
+         /*  resourceJSON.put("uri", ero2Resource.getURI()); */
+          resourceJSON.put("uri", "129.194.69.241");
           resourceJSON.put("params",
               ero2Resource.getQueryParameters());
           resourcesJSON.add(resourceJSON);
