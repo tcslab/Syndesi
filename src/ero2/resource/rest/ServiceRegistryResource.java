@@ -83,7 +83,7 @@ public class ServiceRegistryResource extends LocalResource {
         switch(attributeno){
           case 0:
             name=attribute;
-            System.out.println("putain:"+name+".");
+            System.out.println("name:"+name+".");
             if(name!=" "){
               resource=new ErO2Resource(name, uri, method, queryString);
             }else{

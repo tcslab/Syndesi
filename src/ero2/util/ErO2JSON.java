@@ -36,7 +36,7 @@ public class ErO2JSON {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
           resourceJSON = new JSONObject();
-          resourceJSON.put("quelcom", "ohlala");
+          resourceJSON.put("name", ero2Resource.getName());
           resourceJSON.put("method", ero2Resource.getMethod());
           resourceJSON.put("uri", ero2Resource.getURI());
           resourceJSON.put("params",
@@ -47,7 +47,7 @@ public class ErO2JSON {
 
       // {service
       JSONObject serviceJSON = new JSONObject();
-      serviceJSON.put("servicePutain", serviceLocator);
+      serviceJSON.put("serviceID", serviceLocator);
       serviceJSON.put("resources", resourcesJSON);
 
       servicesJSON.add(serviceJSON);
