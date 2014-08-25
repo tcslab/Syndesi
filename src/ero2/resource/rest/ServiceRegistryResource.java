@@ -23,6 +23,8 @@ public class ServiceRegistryResource extends LocalResource {
 
   private COAPEndPoint COAPENDPOINT;
 
+  static int counter = 0;
+
   public ServiceRegistryResource(String custom, String title, String rt) {
     super(custom);
     setTitle(title);
@@ -85,7 +87,8 @@ public class ServiceRegistryResource extends LocalResource {
             name=attribute;
             System.out.println("name:"+name+".");
             if(name!=" "){
-              resource=new ErO2Resource(name, uri, method, queryString);
+              counter++;
+              resource=new ErO2Resource(name, uri, counter, method, queryString);
             }else{
               badresource = true;
             }

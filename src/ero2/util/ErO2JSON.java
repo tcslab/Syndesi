@@ -36,6 +36,15 @@ public class ErO2JSON {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
           resourceJSON = new JSONObject();
+          //TODO replace these hardcoded settings in the future
+          String hostname = "node"+ero2Resource.getNumber()+".unige";
+          resourceJSON.put("hardware", "telosb");
+          resourceJSON.put("node_id", serviceLocator);
+          resourceJSON.put("protocol", "coap");
+          resourceJSON.put("ip", "129.194.69.241");
+          resourceJSON.put("hostname", hostname);
+          resourceJSON.put("type", "unige-node");
+          resourceJSON.put("port", "8111");
           resourceJSON.put("name", ero2Resource.getName());
           resourceJSON.put("method", ero2Resource.getMethod());
           resourceJSON.put("uri", ero2Resource.getURI());
@@ -47,7 +56,7 @@ public class ErO2JSON {
 
       // {service
       JSONObject serviceJSON = new JSONObject();
-      serviceJSON.put("serviceID", serviceLocator);
+     /*  serviceJSON.put("serviceID", serviceLocator); */
       serviceJSON.put("resources", resourcesJSON);
 
       servicesJSON.add(serviceJSON);
