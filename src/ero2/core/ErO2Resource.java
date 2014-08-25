@@ -8,7 +8,8 @@ public class ErO2Resource {
   private String queryString;
 
   public ErO2Resource(String name,String uri,String requestMethod, String queryString){
-    this.name = name;
+   /*  this.name = name; */
+    this.name = "putainmec";
     this.uri = uri;
     this.requestMethod = requestMethod;
     if(queryString!=ErO2Service.NULL){
@@ -17,7 +18,7 @@ public class ErO2Resource {
   }
 
   public void setName(String name){
-    this.name = name;
+    this.name = "putainmec";
   }
 
   public void setURI(String uri){
@@ -40,7 +41,7 @@ public class ErO2Resource {
   }
 
   public String getName(){
-    return name;
+    return "putainmec";
   }
 
   public String getURI(){
