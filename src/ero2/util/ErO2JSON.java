@@ -31,26 +31,26 @@ public class ErO2JSON {
       Vector<ErO2Resource> resources = service.getResources();
       JSONArray resourcesJSON = new JSONArray();
 
-      JSONObject resourceJSON;
+      JSONObject nodeJSON;
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
-          resourceJSON = new JSONObject();
+          nodeJSON = new JSONObject();
           //TODO replace these hardcoded settings in the future
           String hostname = "node"+ero2Resource.getNumber()+".unige";
-          resourceJSON.put("hardware", "telosb");
-          resourceJSON.put("node_id", serviceLocator);
-          resourceJSON.put("protocol", "coap");
-          resourceJSON.put("ip", "129.194.69.241");
-          resourceJSON.put("hostname", hostname);
-          resourceJSON.put("type", "unige-node");
-          resourceJSON.put("port", "8111");
-          resourceJSON.put("name", ero2Resource.getName());
-          resourceJSON.put("method", ero2Resource.getMethod());
-          resourceJSON.put("uri", ero2Resource.getURI());
-          resourceJSON.put("params",
+          nodeJSON.put("hardware", "telosb");
+          nodeJSON.put("node_id", serviceLocator);
+          nodeJSON.put("protocol", "coap");
+          nodeJSON.put("ip", "129.194.69.241");
+          nodeJSON.put("hostname", hostname);
+          nodeJSON.put("type", "unige-node");
+          nodeJSON.put("port", "8111");
+          nodeJSON.put("name", ero2Resource.getName());
+          nodeJSON.put("method", ero2Resource.getMethod());
+          nodeJSON.put("uri", ero2Resource.getURI());
+          nodeJSON.put("params",
               ero2Resource.getQueryParameters());
-          resourcesJSON.add(resourceJSON);
+          resourcesJSON.add(nodeJSON);
         }
       }
 
