@@ -47,8 +47,8 @@ public class ErO2JSON {
           nodeJSON.put("port", "8111");
          /*  nodeJSON.put("method", ero2Resource.getMethod()); */
          /*  nodeJSON.put("uri", ero2Resource.getURI()); */
-          nodeJSON.put("params",
-              ero2Resource.getQueryParameters());
+          /* nodeJSON.put("params", */
+          /*     ero2Resource.getQueryParameters()); */
           JSONObject nodeResourceJSON = new JSONObject();
           nodeResourceJSON.put("data_type", "s");
           nodeResourceJSON.put("path", "dev0");
