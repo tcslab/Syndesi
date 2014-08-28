@@ -82,6 +82,29 @@ public class ErO2JSON {
   }
 
   @SuppressWarnings("unchecked")
+  public static String getTestbedInfoJSONString(){
+    String name      = "unigetestbed";
+    double longitude = 46.176685;
+    double latitude  = 6.140571;
+    String domain    = "iot.unige.ch:8111";
+    JSONObject finalJSON = new JSONObject();
+    finalJSON.put("name", name);
+    finalJSON.put("longitude", longitude);
+    finalJSON.put("latitude", latitude);
+    finalJSON.put("domain", domain);
+    StringWriter out = new StringWriter();
+    try {
+      finalJSON.writeJSONString(out);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    System.out.println(jsonText);
+    return jsonText;
+  }
+
+  @SuppressWarnings("unchecked")
   public static String getUpdatesJSONString(String serviceLocator,
       ErO2ServiceStatus status) {
     JSONObject readings = new JSONObject();
