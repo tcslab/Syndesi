@@ -16,7 +16,7 @@ public class HTTPEndPointProxy extends Application {
     public Restlet createInboundRoot() {
         Router router = new Router(getContext());
         router.attach("/service", ErO2RestRegistryResource.class);
-        router.attach("/list", ErO2RestListRegistryResource.class);
+        router.attach("/info", ErO2RestListRegistryResource.class);
         router.attach("/monitor", ErO2RestMonitorResource.class);
         router.attach("/mediate", ErO2RestMediatorResource.class);
         router.attach("/user", ErO2RestProfileResource.class);
