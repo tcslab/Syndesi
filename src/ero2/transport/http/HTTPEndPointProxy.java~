@@ -9,7 +9,6 @@ import ero2.resource.rest.ErO2RestMonitorResource;
 import ero2.resource.rest.ErO2RestProfileResource;
 import ero2.resource.rest.ErO2RestRegistryResource;
 import ero2.resource.rest.ErO2RestListRegistryResource;
-import ero2.resource.rest.ErO2RestXMLResource;
 
 public class HTTPEndPointProxy extends Application {
 
@@ -21,7 +20,6 @@ public class HTTPEndPointProxy extends Application {
         router.attach("/monitor", ErO2RestMonitorResource.class);
         router.attach("/mediate", ErO2RestMediatorResource.class);
         router.attach("/user", ErO2RestProfileResource.class);
-//adding a new class for XML parsing - Orestis
 		router.attach("/service/type/xml_rspec", ErO2RestXMLResource.class);
         return router;
     }
