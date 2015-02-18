@@ -72,7 +72,7 @@ public class ErO2XML {
 
 						xmlStreamWriter.writeStartElement("resource");
 						xmlStreamWriter.writeAttribute("component_manager_id",
-								"urn:publicidL:iot-lab.eu+cm");
+								"urn:publicid:iot-lab.eu+cm");
 						xmlStreamWriter.writeAttribute("exclusive", "true");
 						xmlStreamWriter.writeAttribute("component_id",
 								"urn:publicid:unige.ch+resource+"
@@ -89,10 +89,8 @@ public class ErO2XML {
 								getIPSOResourceType(ero2Resource.getName()));
 						xmlStreamWriter.writeAttribute("path",
 								getIPSOResourcePath(ero2Resource.getName()));
-						xmlStreamWriter.writeAttribute("name",
-								getIPSOResourceType(ero2Resource.getName())
-										+ "at UNIGE.ch" + serviceLocator);
-
+						//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
+						xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
 						xmlStreamWriter.writeEndElement(); // closing /on
 						xmlStreamWriter.writeEndElement(); // closing /IPSO name
 															// description
@@ -129,7 +127,7 @@ public class ErO2XML {
 		if (localResourceName == "bulb")
 			return "lightcontrol";
 		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "lum")
+				|| localResourceName == "light")
 			return "sen";
 		else
 			return "gpio";
@@ -141,7 +139,7 @@ public class ErO2XML {
 		if (localResourceName == "bulb")
 			return "ipso.lt.on";
 		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "lum")
+				|| localResourceName == "light")
 			return "ipso.sen";
 		else
 			return "ipso.gpio.dout";
@@ -153,7 +151,7 @@ public class ErO2XML {
 		if (localResourceName == "bulb")
 			return "/lt/1/on";
 		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "lum")
+				|| localResourceName == "light")
 			return "/sen";
 		else
 			return "/gpio/dout";
