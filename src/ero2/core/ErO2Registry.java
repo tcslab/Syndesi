@@ -3,6 +3,8 @@ package ero2.core;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class ErO2Registry {
 
@@ -28,12 +30,20 @@ public final class ErO2Registry {
     return registry.get(serviceLocator);
   }
 
+  public void updateService(String serviceLocator,String luminance, String temperature){
+    ErO2Service ero2ser = registry.get(serviceLocator);
+    ero2ser.setLuminance(luminance);
+    ero2ser.setTemperature(temperature);
+    registry.put(serviceLocator,ero2ser);
+    // Logger logger = Logger.getLogger("AliLogger");
+    // logger.log(Level.SEVERE, "ALI|ErO2Registry|registry.get("+serviceLocator+").getTemperatureValue: "+registry.get(serviceLocator).getTemperatureValue());
+  }
+
   public Vector<ErO2Service> searchServiceGroup(String groupID){
     Enumeration<String> keys=registry.keys();
     Vector<ErO2Service> services=new Vector<ErO2Service>();
     while(keys.hasMoreElements()){
       String key = keys.nextElement();
-      //System.out.println("key "+key);
       if(key.startsWith(groupID)){
         services.add(registry.get(key));
       }

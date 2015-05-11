@@ -60,7 +60,7 @@ public class ServiceRegistryResource extends LocalResource {
     String serviceLocator=payloadString.substring(0,payloadString.indexOf(ErO2Service.DELIMITER));
     String serviceDescriptor=payloadString.substring(payloadString.indexOf(ErO2Service.DELIMITER)+1,payloadString.lastIndexOf(ErO2Service.DELIMITER)-1);
     StringTokenizer serviceTokenizer=new StringTokenizer(serviceDescriptor, ErO2Service.DELIMITER);
-    //System.out.println("payload "+payloadString + " "+serviceLocator);
+    System.out.println("payload: "+payloadString);
     //System.out.println("sd "+serviceDescriptor);
     //if(serviceDescriptor==null){
     ////  System.out.println("SD null");
@@ -88,7 +88,7 @@ public class ServiceRegistryResource extends LocalResource {
             System.out.println("name:"+name+".");
             if(name!=" "){
               counter++;
-              resource=new ErO2Resource(name, uri, counter, method, queryString);
+              resource=new ErO2Resource(name, uri, counter, method, queryString,serviceLocator);
             }else{
               badresource = true;
             }

@@ -10,6 +10,7 @@ import ero2.resource.rest.ErO2RestProfileResource;
 import ero2.resource.rest.ErO2RestRegistryResource;
 import ero2.resource.rest.ErO2RestListRegistryResource;
 import ero2.resource.rest.ErO2RestXMLResource;
+import ero2.resource.rest.ErO2RestSensValues;
 
 public class HTTPEndPointProxy extends Application {
 
@@ -21,8 +22,9 @@ public class HTTPEndPointProxy extends Application {
         router.attach("/monitor", ErO2RestMonitorResource.class);
         router.attach("/mediate", ErO2RestMediatorResource.class);
         router.attach("/user", ErO2RestProfileResource.class);
-//adding a new class for XML parsing - Orestis
-		router.attach("/service/type/xml_rspec", ErO2RestXMLResource.class);
+        router.attach("/service/type/xml_rspec", ErO2RestXMLResource.class);
+        // Returns only the values of sensors(luminance, temperature)
+        router.attach("/sensorvalues", ErO2RestSensValues.class);
         return router;
     }
 }

@@ -4,11 +4,13 @@ public class ErO2Resource {
 
   private String name;
   private String uri;
+  private String serviceLocator;
   private int number;
   private String requestMethod;
   private String queryString;
 
-  public ErO2Resource(String name, String uri,int number,String requestMethod, String queryString){
+  public ErO2Resource(String name, String uri,int number,String requestMethod, String queryString, String serviceLocator){
+    this.serviceLocator = serviceLocator;
     this.name = name;
     this.uri = uri;
     this.number = number;
@@ -45,6 +47,9 @@ public class ErO2Resource {
     return name;
   }
 
+  public String getServiceDesc(){
+    return serviceLocator;
+  }
   public String getURI(){
     return uri;
   }

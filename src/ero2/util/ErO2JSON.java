@@ -125,4 +125,52 @@ public class ErO2JSON {
     String jsonText = out.toString();
     return jsonText;
   }
+
+  @SuppressWarnings("unchecked")
+  public static String getTestbedSensorValuesJSONString(Hashtable<String, ErO2Service> serviceRegistry) {
+
+    Enumeration<String> serviceKeys = serviceRegistry.keys();
+
+    JSONObject finalJSON = new JSONObject();
+    JSONArray servicesJSON = new JSONArray();
+    while (serviceKeys.hasMoreElements()) {
+      String serviceLocator = serviceKeys.nextElement();
+      ErO2Service ero2ser = serviceRegistry.get(serviceLocator);
+      String luminance = ero2ser.getLuminanceValue();
+      String temperature = ero2ser.getTemperatureValue();
+
+      JSONArray resourcesJSON = new JSONArray();
+
+      JSONObject nodeJSON = new JSONObject();
+      nodeJSON.put("node", serviceLocator);
+      if(luminance.equals("") || luminance == null){
+        luminance = "Not available";
+      }
+      if(temperature.equals("") || temperature == null){
+        temperature = "Not available";
+      }
+      nodeJSON.put("luminance", luminance);
+      nodeJSON.put("temperature", temperature);
+      resourcesJSON.add(nodeJSON);
+
+      // {service
+      JSONObject serviceJSON = new JSONObject();
+     /*  serviceJSON.put("serviceID", serviceLocator); */
+      serviceJSON.put("resources", resourcesJSON);
+
+      servicesJSON.add(serviceJSON);
+    }
+    finalJSON.put("services", servicesJSON);
+
+    StringWriter out = new StringWriter();
+    try {
+      finalJSON.writeJSONString(out);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    System.out.println(jsonText);
+    return jsonText;
+  }
+
 }

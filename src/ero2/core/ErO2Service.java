@@ -3,7 +3,11 @@ package ero2.core;
 import java.util.Vector;
 
 public class ErO2Service {
-  String ipaddr;
+  private String ipaddr;
+  private String serviceLocator;
+  private String luminance_value;
+  private String temperature_value;
+  private String humidity_value;
   Vector<ErO2Resource> resources = new Vector<ErO2Resource>();
 
   public static String DELIMITER = "|";
@@ -44,6 +48,26 @@ public class ErO2Service {
     return ipaddr;
   }
 
+  public String getServiceLocator() {
+    return serviceLocator;
+  }
+
+  public String getLuminanceValue() {
+    return luminance_value;
+  }
+
+  public String getTemperatureValue() {
+    return temperature_value;
+  }
+
+  public void setLuminance(String luminance_value){
+    this.luminance_value = luminance_value;
+  }
+
+  public void setTemperature(String temperature_value){
+    this.temperature_value = temperature_value;
+  }
+
   public String getSerialization() {
     String serviceString = ipaddr;
     for (ErO2Resource resource : resources) {
@@ -54,4 +78,5 @@ public class ErO2Service {
     }
     return serviceString;
   }
+
 }
