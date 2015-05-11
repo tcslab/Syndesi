@@ -77,6 +77,8 @@ public class ErO2XML {
 						xmlStreamWriter.writeAttribute("component_id",
 								"urn:publicid:unige.ch+resource+"
 										+ ero2Resource.getName());
+						xmlStreamWriter.writeAttribute("NID",
+										+ serviceLocator()); //unique NodeID used to map with other services. It comes hardcoded on the node.
 
 						// create an element with the IPSO resource description
 						xmlStreamWriter
