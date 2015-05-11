@@ -131,34 +131,20 @@ public class ErO2JSON {
 
     Enumeration<String> serviceKeys = serviceRegistry.keys();
 
-    JSONObject finalJSON = new JSONObject();
+    JSONObject finalJSON   = new JSONObject();
     JSONArray servicesJSON = new JSONArray();
     while (serviceKeys.hasMoreElements()) {
       String serviceLocator = serviceKeys.nextElement();
-      ErO2Service ero2ser = serviceRegistry.get(serviceLocator);
-      String luminance = ero2ser.getLuminanceValue();
-      String temperature = ero2ser.getTemperatureValue();
+      ErO2Service ero2ser   = serviceRegistry.get(serviceLocator);
+      String luminance      = ero2ser.getLuminanceValue();
+      String temperature    = ero2ser.getTemperatureValue();
 
-      JSONArray resourcesJSON = new JSONArray();
 
-      JSONObject nodeJSON = new JSONObject();
+      JSONObject nodeJSON   = new JSONObject();
       nodeJSON.put("node", serviceLocator);
-      if(luminance.equals("") || luminance == null){
-        luminance = "Not available";
-      }
-      if(temperature.equals("") || temperature == null){
-        temperature = "Not available";
-      }
       nodeJSON.put("luminance", luminance);
       nodeJSON.put("temperature", temperature);
-      resourcesJSON.add(nodeJSON);
-
-      // {service
-      JSONObject serviceJSON = new JSONObject();
-     /*  serviceJSON.put("serviceID", serviceLocator); */
-      serviceJSON.put("resources", resourcesJSON);
-
-      servicesJSON.add(serviceJSON);
+      servicesJSON.add(nodeJSON);
     }
     finalJSON.put("services", servicesJSON);
 

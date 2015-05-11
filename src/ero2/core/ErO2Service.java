@@ -19,6 +19,8 @@ public class ErO2Service {
 
   public ErO2Service(String ipaddr) {
     this.ipaddr = ipaddr;
+    this.luminance_value = null;
+    this.temperature_value = null;
   }
 
   public void addResource(ErO2Resource resource) {
