@@ -32,7 +32,7 @@ public class ErO2RestXMLResource extends ServerResource {
 					.getServicesXMLString(serviceRegistry);
 			return servicesXML;
 		} else {
-			System.out.println("No resource available for XML parsing!");
+			System.out.println(" Server is Running but No resource available for XML parsing!");
 			return("No resource available for XML parsing!");
 		}
 
