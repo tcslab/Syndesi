@@ -56,6 +56,11 @@ public class ErO2XML {
 				xmlStreamWriter.writeStartElement("interface");
 				xmlStreamWriter.writeAttribute("component_id", "sdfa");
 
+				xmlStreamWriter.writeStartElement("location");
+				xmlStreamWriter.writeAttribute("latitude", "46.1765964");
+				xmlStreamWriter.writeAttribute("longitude", "6.1399820");
+				xmlStreamWriter.writeEndElement();
+				
 				xmlStreamWriter.writeStartElement("ip");
 				xmlStreamWriter.writeAttribute("address", "129.194.70.52");
 				xmlStreamWriter.writeAttribute("netmask", "255.255.255.0");
