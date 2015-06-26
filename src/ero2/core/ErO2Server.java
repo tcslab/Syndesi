@@ -17,7 +17,7 @@ public class ErO2Server {
 		//Init NFC listner
 		//NFCListner nfclistener = new NFCListner();
 		//nfclistener.initialize();
-		
+		//TEST FOR GIT
 		
 		//COAP end point
 		try{
