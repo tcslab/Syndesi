@@ -75,7 +75,8 @@ public class ErO2XML {
 					if (ero2Resource.getName() != null
 							&& ero2Resource.getMethod() != null) {
 
-						xmlStreamWriter.writeStartElement("resource");
+					xmlStreamWriter.writeStartElement("resource");
+						xmlStreamWriter.writeAttribute("max_reservations","1");
 						xmlStreamWriter.writeAttribute("component_manager_id",
 								"urn:publicid:iot-lab.eu+cm");
 						xmlStreamWriter.writeAttribute("exclusive", "true");
