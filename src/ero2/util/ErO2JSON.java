@@ -45,7 +45,7 @@ public class ErO2JSON {
           nodeJSON.put("protocol", "coap");
           nodeJSON.put("ip", "129.194.69.241");
           nodeJSON.put("hostname", hostname);
-          nodeJSON.put("type", "unige-node");
+          nodeJSON.put("type", "sensor/values");
           nodeJSON.put("port", "8111");
          /*  nodeJSON.put("method", ero2Resource.getMethod()); */
          /*  nodeJSON.put("uri", ero2Resource.getURI()); */
