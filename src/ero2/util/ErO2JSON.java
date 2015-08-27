@@ -27,6 +27,8 @@ public class ErO2JSON {
       String serviceLocator = serviceKeys.nextElement();
       System.out.println(serviceLocator);
       ErO2Service service = serviceRegistry.get(serviceLocator);
+      String luminance      = service.getLuminanceValue();
+      String temperature    = service.getTemperatureValue();
       // []
       Vector<ErO2Resource> resources = service.getResources();
       JSONArray resourcesJSON = new JSONArray();
@@ -35,8 +37,6 @@ public class ErO2JSON {
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
-          String luminance      = service.getLuminanceValue();
-          String temperature    = service.getTemperatureValue();
           nodeJSON = new JSONObject();
           //TODO replace these hardcoded settings in the future
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
@@ -45,7 +45,7 @@ public class ErO2JSON {
           nodeJSON.put("protocol", "coap");
           nodeJSON.put("ip", "129.194.69.241");
           nodeJSON.put("hostname", hostname);
-          nodeJSON.put("type", "sensor/values");
+          nodeJSON.put("type", "sensor\\/values");
           nodeJSON.put("port", "8111");
          /*  nodeJSON.put("method", ero2Resource.getMethod()); */
          /*  nodeJSON.put("uri", ero2Resource.getURI()); */
