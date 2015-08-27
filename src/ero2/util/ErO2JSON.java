@@ -35,6 +35,8 @@ public class ErO2JSON {
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
+          String luminance      = ero2Resource.getLuminanceValue();
+          String temperature    = ero2Resource.getTemperatureValue();
           nodeJSON = new JSONObject();
           //TODO replace these hardcoded settings in the future
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
@@ -53,6 +55,8 @@ public class ErO2JSON {
           nodeResourceJSON.put("data_type", "s");
           nodeResourceJSON.put("path", "dev0");
           nodeResourceJSON.put("type", "s");
+          nodeResourceJSON.put("luminance", luminance);
+          nodeResourceJSON.put("temperature", temperature);
           nodeResourceJSON.put("name", ero2Resource.getName());
           nodeResourceJSON.put("unit", "");
           nodeJSON.put("resourcesnode", nodeResourceJSON);
