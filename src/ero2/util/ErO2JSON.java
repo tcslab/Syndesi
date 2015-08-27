@@ -43,10 +43,10 @@ public class ErO2JSON {
           nodeJSON.put("hardware", "telosb");
           nodeJSON.put("node_id", serviceLocator);
           nodeJSON.put("protocol", "coap");
-          nodeJSON.put("ip", "129.194.69.241");
+          nodeJSON.put("ip", "129.194.70.52");
           nodeJSON.put("hostname", hostname);
-          nodeJSON.put("type", "sensor\\/values");
-          nodeJSON.put("port", "8111");
+          nodeJSON.put("type", "sensor-values");
+          nodeJSON.put("port", "5683");
          /*  nodeJSON.put("method", ero2Resource.getMethod()); */
          /*  nodeJSON.put("uri", ero2Resource.getURI()); */
           /* nodeJSON.put("params", */
