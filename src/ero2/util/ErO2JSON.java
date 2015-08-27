@@ -35,8 +35,8 @@ public class ErO2JSON {
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
-          String luminance      = ero2Resource.getLuminanceValue();
-          String temperature    = ero2Resource.getTemperatureValue();
+          String luminance      = service.getLuminanceValue();
+          String temperature    = service.getTemperatureValue();
           nodeJSON = new JSONObject();
           //TODO replace these hardcoded settings in the future
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
