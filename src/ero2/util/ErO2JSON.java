@@ -2,9 +2,12 @@ package ero2.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+import org.apache.http.client.utils.URIBuilder;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -21,13 +24,28 @@ public class ErO2JSON {
 
     Enumeration<String> serviceKeys = serviceRegistry.keys();
     String ip = "129.194.70.52";
-    URIBuilder uri_b = new URIBuilder("http://"+ip+":8011/ero2proxy/monitor");
+    URIBuilder uri_b = new URIBuilder();
+    URI uri = null;
+    uri_b.setScheme("http").setHost(ip).setPort(8011).setPath("/ero2proxy/monitor");
 
     JSONObject finalJSON = new JSONObject();
     JSONArray servicesJSON = new JSONArray();
     while (serviceKeys.hasMoreElements()) {
       String serviceLocator = serviceKeys.nextElement();
-      uri_b.addParameter("service",serviceLocator);
+      
+      try
+      {
+        uri_b.addParameter("service",serviceLocator);
+	uri = uri_b.build();
+      }
+      catch (URISyntaxException e)
+      {
+      	System.out.println("Exception building URI [" + uri.toString() + "]");
+	//out = respon
+      	//e.printStackTrace(out);
+      	// No point in continuing...
+      	return null;
+      }
       System.out.println(serviceLocator);
       ErO2Service service = serviceRegistry.get(serviceLocator);
       String luminance      = service.getLuminanceValue();
