@@ -2,8 +2,12 @@ package ero2.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL; 
+import java.net.URLEncoder;
+import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
@@ -24,28 +28,55 @@ public class ErO2JSON {
 
     Enumeration<String> serviceKeys = serviceRegistry.keys();
     String ip = "129.194.70.52";
-    URIBuilder uri_b = new URIBuilder();
-    URI uri = null;
-    uri_b.setScheme("http").setHost(ip).setPort(8011).setPath("/ero2proxy/monitor");
+    URIBuilder builder = null;
+    URIBuilder uri_b = null;
+    //uri_b.addParameter("t", "search");
+    //builder.scheme("http")
+	//.autority(ip+":8011")
+        //.appendPath("ero2proxy")
+        //.appendPath("monitor")
+        //.appendQueryParam("name", "pune");
+    URI urla = null;
+    //uri_b.setScheme("http").setHost(ip).setPort(8011).setPath("/ero2proxy/monitor");
+    URL myURL=null;
 
     JSONObject finalJSON = new JSONObject();
     JSONArray servicesJSON = new JSONArray();
     while (serviceKeys.hasMoreElements()) {
       String serviceLocator = serviceKeys.nextElement();
+    try {
+//	builder = new URIBuilder();
+//	builder.setScheme("http").setHost("www.google.com").setPath("/search")
+//            .setParameter("q", "httpclient")
+//            .setParameter("btnG", "Google Search")
+//            .setParameter("aq", "f")
+//            .setParameter("oq", "");
+    myURL = new URL("http://129.194.70.52:8011/ero2proxy/monitor?service="+serviceLocator);
+    //uri_b = new URIBuilder("http://example.com");
+    //urla = uri_b.build();
+    //urla = builder.build();
+    } 
+    catch (MalformedURLException e) {
+        // exception handler code here
+        // ...
+    }
       
-      try
-      {
-        uri_b.addParameter("service",serviceLocator);
-	uri = uri_b.build();
-      }
-      catch (URISyntaxException e)
-      {
-      	System.out.println("Exception building URI [" + uri.toString() + "]");
+//      try
+//      {
+        //uri_b.addParameter("service",serviceLocator);
+//	uri_b.addParameter("service","puree");
+
+//	uri = uri_b.build();
+//      }
+      //catch (URISyntaxException e)
+//      catch (Exception e)
+//      {
+//      	System.out.println("Exception building URI [" + uri.toString() + "]");
 	//out = respon
       	//e.printStackTrace(out);
       	// No point in continuing...
-      	return null;
-      }
+//      	return null;
+//      }
       System.out.println(serviceLocator);
       ErO2Service service = serviceRegistry.get(serviceLocator);
       String luminance      = service.getLuminanceValue();
@@ -63,7 +94,10 @@ public class ErO2JSON {
           nodeJSON.put("hardware", "telosb");
           nodeJSON.put("node_id", serviceLocator);
           nodeJSON.put("protocol", "coap");
-          nodeJSON.put("uri", uri_b.toString());
+	  String ss = myURL.toString();
+	  ss = ss.replace("\\/","/");
+          nodeJSON.put("uri", ss);
+         // nodeJSON.put("uri", urla);
           nodeJSON.put("ip", ip);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-values");
