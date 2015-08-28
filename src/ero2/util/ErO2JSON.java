@@ -20,11 +20,14 @@ public class ErO2JSON {
       Hashtable<String, ErO2Service> serviceRegistry) {
 
     Enumeration<String> serviceKeys = serviceRegistry.keys();
+    String ip = "129.194.70.52";
+    URIBuilder uri_b = new URIBuilder("http://"+ip+":8011/ero2proxy/monitor");
 
     JSONObject finalJSON = new JSONObject();
     JSONArray servicesJSON = new JSONArray();
     while (serviceKeys.hasMoreElements()) {
       String serviceLocator = serviceKeys.nextElement();
+      uri_b.addParameter("service",serviceLocator);
       System.out.println(serviceLocator);
       ErO2Service service = serviceRegistry.get(serviceLocator);
       String luminance      = service.getLuminanceValue();
@@ -38,12 +41,12 @@ public class ErO2JSON {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
           nodeJSON = new JSONObject();
-          //TODO replace these hardcoded settings in the future
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
           nodeJSON.put("hardware", "telosb");
           nodeJSON.put("node_id", serviceLocator);
           nodeJSON.put("protocol", "coap");
-          nodeJSON.put("ip", "129.194.70.52");
+          nodeJSON.put("uri", uri_b.toString());
+          nodeJSON.put("ip", ip);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-values");
           nodeJSON.put("port", "5683");
@@ -58,7 +61,7 @@ public class ErO2JSON {
           nodeResourceJSON.put("luminance", luminance);
           nodeResourceJSON.put("temperature", temperature);
           nodeResourceJSON.put("name", ero2Resource.getName());
-          nodeResourceJSON.put("unit", "");
+          nodeResourceJSON.put("unit", "%");
           nodeJSON.put("resourcesnode", nodeResourceJSON);
           resourcesJSON.add(nodeJSON);
         }
