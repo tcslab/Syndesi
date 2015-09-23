@@ -34,7 +34,7 @@ public class CrowdRestDataResource extends ServerResource {
 	public String getData() {
 		if(((String)getRequest().getAttributes().get("type")) != null && ((String)getRequest().getAttributes().get("type")).equals("mobile")){
 			return crowdController.getDataJSON().toJSONString();
-		}else if(((String)getRequest().getAttributes().get("type")) != null && ((String)getRequest().getAttributes().get("type")).equals("fixed")){
+		}else if(((String)getRequest().getAttributes().get("type")) != null && ((String)getRequest().getAttributes().get("type")).equals("Physical&Virtual")){
 			return CrowdNodesController.getInstance().getNodesJSON().toJSONString();
 		}else{
 			JSONObject dataJSON = new JSONObject();

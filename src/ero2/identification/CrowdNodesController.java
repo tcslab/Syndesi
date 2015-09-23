@@ -226,7 +226,7 @@ public class CrowdNodesController extends TimerTask{
 		for(CrowdNode node : nodesList){
 			listDataArray.add(node.getJSON());
 		}
-		representation.put("fixed", listDataArray);
+		representation.put("Physical&Virtual", listDataArray);
 		return representation;
 	}
 
