@@ -84,7 +84,7 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("component_id",
 							"urn:publicid:unige.ch+resource+"
 									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", Integer.toString(ero2Resource.getNumber())); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					xmlStreamWriter.writeAttribute("NID", Integer.toString(1111)); //unique NodeID used to map with other services. It comes hardcoded on the node.
 					
 					// create an element with the IPSO resource description
 					xmlStreamWriter.writeStartElement(getIPSOResourceName(ero2Resource.getName()));
@@ -94,9 +94,9 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("interface_type",
 							getIPSOResourceType(ero2Resource.getName()));
 					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/mediate?service=" + ero2Resource.getNumber() + "&resource=" + ero2Resource.getName()+ "&status=on");
+							"/ero2proxy/mediate?service=" + 1111 + "&resource=" + ero2Resource.getName()+ "&status=on");
 					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + ero2Resource.getNumber());
+					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + 1111);
 					xmlStreamWriter.writeEndElement(); // closing /on
 					xmlStreamWriter.writeEndElement(); // closing /IPSO name
 														// description
@@ -112,7 +112,7 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("component_id",
 							"urn:publicid:unige.ch+resource+"
 									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", Integer.toString(ero2Resource.getNumber())); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					xmlStreamWriter.writeAttribute("NID", Integer.toString(1111)); //unique NodeID used to map with other services. It comes hardcoded on the node.
 					
 					// create an element with the IPSO resource description
 					xmlStreamWriter
@@ -124,9 +124,9 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("interface_type",
 							getIPSOResourceType(ero2Resource.getName()));
 					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/mediate?service=" + ero2Resource.getNumber() + "&resource=" + ero2Resource.getName()+ "&status=off");
+							"/ero2proxy/mediate?service=" + 1111 + "&resource=" + ero2Resource.getName()+ "&status=off");
 					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + ero2Resource.getNumber());
+					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + 1111);
 					xmlStreamWriter.writeEndElement(); // closing /on
 					xmlStreamWriter.writeEndElement(); // closing /IPSO name
 														// description
@@ -142,7 +142,7 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("component_id",
 							"urn:publicid:unige.ch+resource+"
 									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", Integer.toString(ero2Resource.getNumber())); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					xmlStreamWriter.writeAttribute("NID", Integer.toString(1111)); //unique NodeID used to map with other services. It comes hardcoded on the node.
 					
 					// create an element with the IPSO resource description
 					xmlStreamWriter
@@ -152,9 +152,9 @@ public class ErO2XML {
 					xmlStreamWriter.writeAttribute("interface_def", "a");
 					xmlStreamWriter.writeAttribute("interface_type","ipso.sen.lum");
 					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/monitor?service=" + ero2Resource.getNumber());
+							"/ero2proxy/monitor?service=" + 1111);
 					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", "luminance at UNIGE with NID: " + ero2Resource.getNumber());
+					xmlStreamWriter.writeAttribute("name", "luminance at UNIGE with NID: " + 1111);
 					xmlStreamWriter.writeEndElement(); // closing /on
 					xmlStreamWriter.writeEndElement(); // closing /IPSO name
 														// description
