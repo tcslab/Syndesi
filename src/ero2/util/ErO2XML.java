@@ -14,7 +14,7 @@ import ero2.core.ErO2Resource;
 import ero2.core.ErO2Service;
 import ero2.core.ErO2ServiceStatus;
 
-public class ErO2XML2 {
+public class ErO2XML {
 
 	@SuppressWarnings("unchecked")
 	public String getServicesXMLString(
