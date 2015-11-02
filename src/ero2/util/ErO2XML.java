@@ -14,7 +14,7 @@ import ero2.core.ErO2Resource;
 import ero2.core.ErO2Service;
 import ero2.core.ErO2ServiceStatus;
 
-public class ErO2XML {
+public class ErO2XML_update {
 
 	@SuppressWarnings("unchecked")
 	public String getServicesXMLString(
@@ -74,39 +74,99 @@ public class ErO2XML {
 				for (ErO2Resource ero2Resource : resources) {
 					if (ero2Resource.getName() != null
 							&& ero2Resource.getMethod() != null) {
-
+						
+					//actuation on
 					xmlStreamWriter.writeStartElement("resource");
-						xmlStreamWriter.writeAttribute("max_reservations","1");
-						xmlStreamWriter.writeAttribute("component_manager_id",
-								"urn:publicid:iot-lab.eu+cm");
-						xmlStreamWriter.writeAttribute("exclusive", "true");
-						xmlStreamWriter.writeAttribute("component_id",
-								"urn:publicid:unige.ch+resource+"
-										+ ero2Resource.getName());
-						xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
-
-						// create an element with the IPSO resource description
-						xmlStreamWriter
-								.writeStartElement(getIPSOResourceName(ero2Resource
-										.getName()));
-						xmlStreamWriter.writeStartElement("on");
-						xmlStreamWriter.writeAttribute("data_type", "true");
-						xmlStreamWriter.writeAttribute("interface_def", "a");
-						xmlStreamWriter.writeAttribute("interface_type",
-								getIPSOResourceType(ero2Resource.getName()));
-						xmlStreamWriter.writeAttribute("path",
-								getIPSOResourcePath(ero2Resource.getName()));
-						//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-						xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
-						xmlStreamWriter.writeEndElement(); // closing /on
-						xmlStreamWriter.writeEndElement(); // closing /IPSO name
-															// description
-						xmlStreamWriter.writeEndElement(); // closing /resource
-															// description
+					xmlStreamWriter.writeAttribute("max_reservations","1");
+					xmlStreamWriter.writeAttribute("component_manager_id",
+							"urn:publicid:iot-lab.eu+cm");
+					xmlStreamWriter.writeAttribute("exclusive", "true");
+					xmlStreamWriter.writeAttribute("component_id",
+							"urn:publicid:unige.ch+resource+"
+									+ ero2Resource.getName());
+					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					
+					// create an element with the IPSO resource description
+					xmlStreamWriter
+							.writeStartElement(getIPSOResourceName(ero2Resource
+									.getName()));
+					xmlStreamWriter.writeStartElement("on");
+					xmlStreamWriter.writeAttribute("data_type", "true");
+					xmlStreamWriter.writeAttribute("interface_def", "a");
+					xmlStreamWriter.writeAttribute("interface_type",
+							getIPSOResourceType(ero2Resource.getName()));
+					xmlStreamWriter.writeAttribute("path",
+							"/ero2proxy/mediate?service=" + serviceLocator + "&resource=" + ero2Resource.getName()+ "&status=on");
+					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
+					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
+					xmlStreamWriter.writeEndElement(); // closing /on
+					xmlStreamWriter.writeEndElement(); // closing /IPSO name
+														// description
+					xmlStreamWriter.writeEndElement(); // closing /resource
+														// description
+					
+					//actuation off
+					xmlStreamWriter.writeStartElement("resource");
+					xmlStreamWriter.writeAttribute("max_reservations","1");
+					xmlStreamWriter.writeAttribute("component_manager_id",
+							"urn:publicid:iot-lab.eu+cm");
+					xmlStreamWriter.writeAttribute("exclusive", "true");
+					xmlStreamWriter.writeAttribute("component_id",
+							"urn:publicid:unige.ch+resource+"
+									+ ero2Resource.getName());
+					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					
+					// create an element with the IPSO resource description
+					xmlStreamWriter
+							.writeStartElement(getIPSOResourceName(ero2Resource
+									.getName())); //HARDCODED gpio??
+					xmlStreamWriter.writeStartElement("off");
+					xmlStreamWriter.writeAttribute("data_type", "true");
+					xmlStreamWriter.writeAttribute("interface_def", "a");
+					xmlStreamWriter.writeAttribute("interface_type",
+							getIPSOResourceType(ero2Resource.getName()));
+					xmlStreamWriter.writeAttribute("path",
+							"/ero2proxy/mediate?service=" + serviceLocator + "&resource=" + ero2Resource.getName()+ "&status=off");
+					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
+					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
+					xmlStreamWriter.writeEndElement(); // closing /on
+					xmlStreamWriter.writeEndElement(); // closing /IPSO name
+														// description
+					xmlStreamWriter.writeEndElement(); // closing /resource
+														// description
+					
+					//sensor value(luminance)
+					xmlStreamWriter.writeStartElement("resource");
+					xmlStreamWriter.writeAttribute("max_reservations","1");
+					xmlStreamWriter.writeAttribute("component_manager_id",
+							"urn:publicid:iot-lab.eu+cm");
+					xmlStreamWriter.writeAttribute("exclusive", "true");
+					xmlStreamWriter.writeAttribute("component_id",
+							"urn:publicid:unige.ch+resource+"
+									+ ero2Resource.getName());
+					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
+					
+					// create an element with the IPSO resource description
+					xmlStreamWriter
+							.writeStartElement("sen");
+					xmlStreamWriter.writeStartElement("off");
+					xmlStreamWriter.writeAttribute("data_type", "true");
+					xmlStreamWriter.writeAttribute("interface_def", "a");
+					xmlStreamWriter.writeAttribute("interface_type",
+							getIPSOResourceType(ero2Resource.getName()));
+					xmlStreamWriter.writeAttribute("path",
+							"/ero2proxy/monitor?service=" + serviceLocator);
+					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
+					xmlStreamWriter.writeAttribute("name", "luminance at UNIGE with NID: " + serviceLocator);
+					xmlStreamWriter.writeEndElement(); // closing /on
+					xmlStreamWriter.writeEndElement(); // closing /IPSO name
+														// description
+					xmlStreamWriter.writeEndElement(); // closing /resource
+														// description
 					}
 				}
 				xmlStreamWriter.writeEndElement(); // closing /node
-
+				
 			}
 			xmlStreamWriter.writeEndElement(); // closing /rspec
 			xmlStreamWriter.writeEndDocument(); // closing /document
