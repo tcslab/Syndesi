@@ -51,7 +51,7 @@ public class ErO2JSON {
 //            .setParameter("btnG", "Google Search")
 //            .setParameter("aq", "f")
 //            .setParameter("oq", "");
-    myURL = new URL("http://129.194.70.52:8011/ero2proxy/monitor?service="+serviceLocator);
+    myURL = new URL("http://129.194.70.52:8011/ero2proxy");
     //uri_b = new URIBuilder("http://example.com");
     //urla = uri_b.build();
     //urla = builder.build();
@@ -89,32 +89,67 @@ public class ErO2JSON {
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
+        	
+    // actuation on
+        	
           nodeJSON = new JSONObject();
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
+          
+//!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
+//!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variables in fields node_id and unit! 
+          String node_id, unit;
+          if (serviceLocator.length() > 6) {
+        	node_id = serviceLocator.substring(0,4);
+        	unit = serviceLocator.substring(5);
+          }
+          else {
+        	  node_id = serviceLocator;
+        	  unit = "sensor-value";
+          }
+//!!! END OF HACK
+          
           nodeJSON.put("hardware", "telosb");
-          nodeJSON.put("node_id", serviceLocator);
+          nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "coap");
-	  String ss = myURL.toString();
-	  ss = ss.replace("\\/","/");
-          nodeJSON.put("uri", ss);
-         // nodeJSON.put("uri", urla);
           nodeJSON.put("ip", ip);
           nodeJSON.put("hostname", hostname);
-          nodeJSON.put("type", "sensor-values");
-          nodeJSON.put("port", "5683");
-         /*  nodeJSON.put("method", ero2Resource.getMethod()); */
-         /*  nodeJSON.put("uri", ero2Resource.getURI()); */
-          /* nodeJSON.put("params", */
-          /*     ero2Resource.getQueryParameters()); */
-          JSONObject nodeResourceJSON = new JSONObject();
-          nodeResourceJSON.put("data_type", "s");
-          nodeResourceJSON.put("path", "dev0");
-          nodeResourceJSON.put("type", "s");
-          nodeResourceJSON.put("luminance", luminance);
-          nodeResourceJSON.put("temperature", temperature);
-          nodeResourceJSON.put("name", ero2Resource.getName());
-          nodeResourceJSON.put("unit", "%");
-          nodeJSON.put("resourcesnode", nodeResourceJSON);
+          nodeJSON.put("type", "sensor-actuator");
+          nodeJSON.put("port", "8111");
+          
+          //actuation on
+          JSONObject nodeResourceJSONactOn = new JSONObject();
+          nodeResourceJSONactOn.put("data_type", "true");
+          nodeResourceJSONactOn.put("path", "/mediate?service=" + node_id + "&resource=bulb&status=on");
+          nodeResourceJSONactOn.put("type", "ipso.gpio.dout");
+          nodeResourceJSONactOn.put("luminance", luminance);
+          nodeResourceJSONactOn.put("temperature", temperature);
+          nodeResourceJSONactOn.put("name", ero2Resource.getName() + "at UNIGE with NID:" + node_id);
+          nodeResourceJSONactOn.put("unit", unit);
+          nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
+          resourcesJSON.add(nodeJSON);
+    
+        //actuation off
+          JSONObject nodeResourceJSONactOff = new JSONObject();
+          nodeResourceJSONactOff.put("data_type", "true");
+          nodeResourceJSONactOff.put("path", "/mediate?service=" + node_id + "&resource=bulb&status=off");
+          nodeResourceJSONactOff.put("type", "ipso.gpio.dout");
+          nodeResourceJSONactOff.put("luminance", luminance);
+          nodeResourceJSONactOff.put("temperature", temperature);
+          nodeResourceJSONactOff.put("name", ero2Resource.getName() + "at UNIGE with NID:" + node_id);
+          nodeResourceJSONactOff.put("unit", unit);
+          nodeJSON.put("resourcesnode", nodeResourceJSONactOff);
+          resourcesJSON.add(nodeJSON);
+          
+        //luminance sensor
+          JSONObject nodeResourceJSONlumSen = new JSONObject();
+          nodeResourceJSONlumSen.put("data_type", "true");
+          nodeResourceJSONlumSen.put("path", "/monitor?service=" + node_id);
+          nodeResourceJSONlumSen.put("type", "ipso.gpio.dout");
+          nodeResourceJSONlumSen.put("luminance", luminance);
+          nodeResourceJSONlumSen.put("temperature", temperature);
+          nodeResourceJSONlumSen.put("name", ero2Resource.getName() + "at UNIGE with NID:" + node_id);
+          nodeResourceJSONlumSen.put("unit", unit);
+          nodeJSON.put("resourcesnode", nodeResourceJSONlumSen);
           resourcesJSON.add(nodeJSON);
         }
       }
