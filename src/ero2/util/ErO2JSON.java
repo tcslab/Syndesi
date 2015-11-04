@@ -89,12 +89,8 @@ public class ErO2JSON {
       for (ErO2Resource ero2Resource : resources) {
         if (ero2Resource.getName() != null
             && ero2Resource.getMethod() != null) {
-        	
-    // actuation on
-        	
           nodeJSON = new JSONObject();
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
-          
 //!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
 //!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variables in fields node_id and unit! 
           String node_id, unit;
@@ -107,7 +103,6 @@ public class ErO2JSON {
         	  unit = "sensor-value";
           }
 //!!! END OF HACK
-          
           nodeJSON.put("hardware", "telosb");
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "coap");
