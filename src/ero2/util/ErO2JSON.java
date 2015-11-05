@@ -108,7 +108,9 @@ public class ErO2JSON {
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "coap");
           nodeJSON.put("ip", ip);
-          nodeJSON.put("uri", myURL.toString());
+          String ss = myURL.toString();
+	  ss = ss.replace("\\/","/");
+          nodeJSON.put("uri", ss);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
