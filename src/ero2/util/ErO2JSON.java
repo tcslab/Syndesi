@@ -158,6 +158,7 @@ public class ErO2JSON {
           nodeResourceJSONlumSen.put("unit", "sensor-value");
           nodeResourceArray.add(nodeResourceJSONlumSen);
           nodeJSON.put("resourcesnode",nodeResourceArray);
+          resourcesJSON.add(nodeJSON);
         }
       }
 
