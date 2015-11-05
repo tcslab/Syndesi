@@ -135,7 +135,15 @@ public class ErO2JSON {
           nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
           resourcesJSON.add(nodeJSON);
        
-    
+          nodeJSON = new JSONObject();
+          nodeJSON.put("hardware", "telosb");
+          nodeJSON.put("node_id", node_id);
+          nodeJSON.put("protocol", "httpUnige");
+          nodeJSON.put("ip", ip);
+          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("hostname", hostname);
+          nodeJSON.put("type", "sensor-actuator");
+          nodeJSON.put("port", "8111");
         //actuation off
           JSONObject nodeResourceJSONactOff = new JSONObject();
           nodeResourceJSONactOff.put("data_type", "true");
@@ -148,6 +156,15 @@ public class ErO2JSON {
           nodeJSON.put("resourcesnode", nodeResourceJSONactOff);
           resourcesJSON.add(nodeJSON);
           
+          nodeJSON = new JSONObject();
+          nodeJSON.put("hardware", "telosb");
+          nodeJSON.put("node_id", node_id);
+          nodeJSON.put("protocol", "httpUnige");
+          nodeJSON.put("ip", ip);
+          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("hostname", hostname);
+          nodeJSON.put("type", "sensor-actuator");
+          nodeJSON.put("port", "8111");
         //luminance sensor
           JSONObject nodeResourceJSONlumSen = new JSONObject();
           nodeResourceJSONlumSen.put("data_type", "true");
@@ -160,14 +177,14 @@ public class ErO2JSON {
           nodeJSON.put("resourcesnode",nodeResourceJSONlumSen);
           resourcesJSON.add(nodeJSON);
           
-          JSONObject serviceJSON = new JSONObject();
-          /*  serviceJSON.put("serviceID", serviceLocator); */
-           serviceJSON.put("resources", resourcesJSON);
-
-           servicesJSON.add(serviceJSON);
+          
         }
       }
+      JSONObject serviceJSON = new JSONObject();
+      /*  serviceJSON.put("serviceID", serviceLocator); */
+       serviceJSON.put("resources", resourcesJSON);
 
+       servicesJSON.add(serviceJSON);
       // {service
       
     }
