@@ -111,7 +111,7 @@ public class ErO2JSON {
           String ss = myURL.toString();
           nodeJSON.put("uri", "http://129.194.70.52:8011/ero2proxy");
           nodeJSON.put("hostname", hostname);
-          nodeJSON.put("type", "sensor-actuator");
+          nodeJSON.put("type", "sensor-actuatorrrrrrr");
           nodeJSON.put("port", "8111");
           
           //actuation on
