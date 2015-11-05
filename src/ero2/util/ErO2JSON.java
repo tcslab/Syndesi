@@ -51,7 +51,7 @@ public class ErO2JSON {
 //            .setParameter("btnG", "Google Search")
 //            .setParameter("aq", "f")
 //            .setParameter("oq", "");
-    myURL = new URL("http://129.194.70.52:8011/ero2proxy");
+    myURL = "http://129.194.70.52:8011/ero2proxy";
     //uri_b = new URIBuilder("http://example.com");
     //urla = uri_b.build();
     //urla = builder.build();
