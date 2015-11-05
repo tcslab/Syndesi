@@ -2,223 +2,260 @@ package ero2.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.net.*;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL; 
+import java.net.URLEncoder;
+import java.net.URLDecoder;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
+import org.apache.http.client.utils.URIBuilder;
 
-import javax.xml.stream.XMLOutputFactory;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import ero2.core.ErO2Resource;
 import ero2.core.ErO2Service;
 import ero2.core.ErO2ServiceStatus;
 
-public class ErO2XML {
+public class ErO2JSON {
 
-	@SuppressWarnings("unchecked")
-	public String getServicesXMLString(
-			Hashtable<String, ErO2Service> serviceRegistry) {
+  @SuppressWarnings("unchecked")
+  public static String getServicesJSONString(
+      Hashtable<String, ErO2Service> serviceRegistry) {
 
-		Enumeration<String> serviceKeys = serviceRegistry.keys();
+    Enumeration<String> serviceKeys = serviceRegistry.keys();
+    String ip = "129.194.70.52";
+    URIBuilder builder = null;
+    URIBuilder uri_b = null;
+    //uri_b.addParameter("t", "search");
+    //builder.scheme("http")
+	//.autority(ip+":8011")
+        //.appendPath("ero2proxy")
+        //.appendPath("monitor")
+        //.appendQueryParam("name", "pune");
+    URI urla = null;
+    //uri_b.setScheme("http").setHost(ip).setPort(8011).setPath("/ero2proxy/monitor");
+    URL myURL=null;
 
-		StringWriter stringWriter = new StringWriter();
+    JSONObject finalJSON = new JSONObject();
+    JSONArray servicesJSON = new JSONArray();
+    while (serviceKeys.hasMoreElements()) {
+      String serviceLocator = serviceKeys.nextElement();
+    try {
+//	builder = new URIBuilder();
+//	builder.setScheme("http").setHost("www.google.com").setPath("/search")
+//            .setParameter("q", "httpclient")
+//            .setParameter("btnG", "Google Search")
+//            .setParameter("aq", "f")
+//            .setParameter("oq", "");
+    myURL = new URL("http://129.194.70.52:8011/");
+    //uri_b = new URIBuilder("http://example.com");
+    //urla = uri_b.build();
+    //urla = builder.build();
+    } 
+    catch (MalformedURLException e) {
+        // exception handler code here
+        // ...
+    }
+      
+//      try
+//      {
+        //uri_b.addParameter("service",serviceLocator);
+//	uri_b.addParameter("service","puree");
 
-		XMLOutputFactory xmlOutputFactory = XMLOutputFactory.newInstance();
-		XMLStreamWriter xmlStreamWriter;
-		try {
-			xmlStreamWriter = xmlOutputFactory
-					.createXMLStreamWriter(stringWriter);
+//	uri = uri_b.build();
+//      }
+      //catch (URISyntaxException e)
+//      catch (Exception e)
+//      {
+//      	System.out.println("Exception building URI [" + uri.toString() + "]");
+	//out = respon
+      	//e.printStackTrace(out);
+      	// No point in continuing...
+//      	return null;
+//      }
+      System.out.println(serviceLocator);
+      ErO2Service service = serviceRegistry.get(serviceLocator);
+      String luminance      = service.getLuminanceValue();
+      String temperature    = service.getTemperatureValue();
+      // []
+      Vector<ErO2Resource> resources = service.getResources();
+      JSONArray resourcesJSON = new JSONArray();
 
-			xmlStreamWriter.writeStartDocument();
-			xmlStreamWriter.writeStartElement("rspec");
-			xmlStreamWriter.writeAttribute("type", "advertisement");
-			xmlStreamWriter.writeAttribute("xsi:schemaLocation",
-					"http://www.iotlab.eu");
-			xmlStreamWriter.writeAttribute("xmlns:xsi",
-					"http://www.w3.org/2001/XMLSchema-instance");
-			xmlStreamWriter.writeAttribute("xmlns", "http://www.iotlab.eu");
+      JSONObject nodeJSON;
+      for (ErO2Resource ero2Resource : resources) {
+        if (ero2Resource.getName() != null
+            && ero2Resource.getMethod() != null) {
+          nodeJSON = new JSONObject();
+          String hostname = "node_"+ero2Resource.getNumber()+".unige";
+//!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
+//!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variables in fields node_id and unit! 
+          Boolean bulb=false;
+          String node_id, unit;
+          if (serviceLocator.length() > 6) {
+        	node_id = serviceLocator.substring(0,4);
+        	bulb = true;
+          }
+          else {
+        	  bulb = false;
+        	  node_id = serviceLocator;
+          }
+          if (serviceLocator.equals("C1S2A1")) {
+        	  bulb = true;
+          };
+          if (bulb) {
+        	  unit = "bulb-lightcontrol";
+          }
+          else {
+        	  unit = "curtain-control";
+          }
+//!!! END OF HACK
+          nodeJSON.put("hardware", "telosb");
+          nodeJSON.put("node_id", node_id);
+          nodeJSON.put("protocol", "httpUnige");
+          nodeJSON.put("ip", ip);
+          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("hostname", hostname);
+          nodeJSON.put("type", "sensor-actuator");
+          nodeJSON.put("port", "8111");
+          
+          //actuation on
+          JSONObject nodeResourceJSONactOn = new JSONObject();
+          nodeResourceJSONactOn.put("data_type", "true");
+          nodeResourceJSONactOn.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=on");
+          nodeResourceJSONactOn.put("type", "ipso.gpio.dout");
+          nodeResourceJSONactOn.put("luminance", luminance);
+          nodeResourceJSONactOn.put("temperature", temperature);
+          nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
+          nodeResourceJSONactOn.put("unit", unit);
+          nodeJSON.put("resourcesnode1", nodeResourceJSONactOn);
+       
+    
+        //actuation off
+          JSONObject nodeResourceJSONactOff = new JSONObject();
+          nodeResourceJSONactOff.put("data_type", "true");
+          nodeResourceJSONactOff.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=off");
+          nodeResourceJSONactOff.put("type", "ipso.gpio.dout");
+          nodeResourceJSONactOff.put("luminance", luminance);
+          nodeResourceJSONactOff.put("temperature", temperature);
+          nodeResourceJSONactOff.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
+          nodeResourceJSONactOff.put("unit", unit);
+          nodeJSON.put("resourcesnode2", nodeResourceJSONactOff);
 
-			while (serviceKeys.hasMoreElements()) {
-				String serviceLocator = serviceKeys.nextElement();
-				System.out.println(serviceLocator);
-				ErO2Service service = serviceRegistry.get(serviceLocator);
+          
+        //luminance sensor
+          JSONObject nodeResourceJSONlumSen = new JSONObject();
+          nodeResourceJSONlumSen.put("data_type", "true");
+          nodeResourceJSONlumSen.put("path", "ero2proxy/monitor?service=" + node_id);
+          nodeResourceJSONlumSen.put("type", "ipso.sen.lum");
+          nodeResourceJSONlumSen.put("luminance", luminance);
+          nodeResourceJSONlumSen.put("temperature", temperature);
+          nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
+          nodeResourceJSONlumSen.put("unit", "sensor-value");
+          nodeJSON.put("resourcesnode3", nodeResourceJSONlumSen);
+          resourcesJSON.add(nodeJSON);
+        }
+      }
 
-				Vector<ErO2Resource> resources = service.getResources();
-				xmlStreamWriter.writeStartElement("node");
-				xmlStreamWriter.writeAttribute("component_manager_id",
-						"urn:publicid:iot-lab.eu+cm");
-				xmlStreamWriter.writeAttribute("component_name", "telosb");
-				xmlStreamWriter.writeAttribute("exclusive", "true");
-				xmlStreamWriter.writeAttribute("component_id",
-						"urn:publicid:unige.ch+node+telosb+" + serviceLocator);
+      // {service
+      JSONObject serviceJSON = new JSONObject();
+     /*  serviceJSON.put("serviceID", serviceLocator); */
+      serviceJSON.put("resources", resourcesJSON);
 
-				xmlStreamWriter.writeStartElement("interface");
-				xmlStreamWriter.writeAttribute("component_id", "sdfa");
+      servicesJSON.add(serviceJSON);
+    }
+    finalJSON.put("services", servicesJSON);
 
-				xmlStreamWriter.writeStartElement("location");
-				xmlStreamWriter.writeAttribute("latitude", "46.1765964");
-				xmlStreamWriter.writeAttribute("longitude", "6.1399820");
-				xmlStreamWriter.writeEndElement();
-				
-				xmlStreamWriter.writeStartElement("ip");
-				xmlStreamWriter.writeAttribute("address", "129.194.70.52");
-				xmlStreamWriter.writeAttribute("netmask", "255.255.255.0");
-				xmlStreamWriter.writeAttribute("protocol", "http");
-				xmlStreamWriter.writeAttribute("type", "");
-				xmlStreamWriter.writeAttribute("port", "8111");
+    StringWriter out = new StringWriter();
+    try {
+      finalJSON.writeJSONString(out);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    return jsonText;
+  }
 
-				xmlStreamWriter.writeEndElement();
-				xmlStreamWriter.writeEndElement();
+  @SuppressWarnings("unchecked")
+  public static String getTestbedInfoJSONString(){
+    String name      = "unigetestbed";
+    double longitude = 46.1767058;
+    double latitude  = 6.1397209;
+    String domain    = "iot.unige.ch:8111";
+    JSONObject finalJSON = new JSONObject();
+    finalJSON.put("name", name);
+    finalJSON.put("longitude", longitude);
+    finalJSON.put("latitude", latitude);
+    finalJSON.put("domain", domain);
+    StringWriter out = new StringWriter();
+    try {
+      finalJSON.writeJSONString(out);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    System.out.println(jsonText);
+    return jsonText;
+  }
 
-				for (ErO2Resource ero2Resource : resources) {
-					if (ero2Resource.getName() != null
-							&& ero2Resource.getMethod() != null) {
-						
-					//actuation on
-					xmlStreamWriter.writeStartElement("resource");
-					xmlStreamWriter.writeAttribute("max_reservations","1");
-					xmlStreamWriter.writeAttribute("component_manager_id",
-							"urn:publicid:iot-lab.eu+cm");
-					xmlStreamWriter.writeAttribute("exclusive", "true");
-					xmlStreamWriter.writeAttribute("component_id",
-							"urn:publicid:unige.ch+resource+"
-									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
-					
-					// create an element with the IPSO resource description
-					xmlStreamWriter.writeStartElement(getIPSOResourceName(ero2Resource.getName()));
-					xmlStreamWriter.writeStartElement("on");
-					xmlStreamWriter.writeAttribute("data_type", "true");
-					xmlStreamWriter.writeAttribute("interface_def", "a");
-					xmlStreamWriter.writeAttribute("interface_type",
-							getIPSOResourceType(ero2Resource.getName()));
-					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/mediate?service=" + serviceLocator + "&resource=" + ero2Resource.getName()+ "&status=on");
-					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
-					xmlStreamWriter.writeEndElement(); // closing /on
-					xmlStreamWriter.writeEndElement(); // closing /IPSO name
-														// description
-					xmlStreamWriter.writeEndElement(); // closing /resource
-														// description
-					
-					//actuation off
-					xmlStreamWriter.writeStartElement("resource");
-					xmlStreamWriter.writeAttribute("max_reservations","1");
-					xmlStreamWriter.writeAttribute("component_manager_id",
-							"urn:publicid:iot-lab.eu+cm");
-					xmlStreamWriter.writeAttribute("exclusive", "true");
-					xmlStreamWriter.writeAttribute("component_id",
-							"urn:publicid:unige.ch+resource+"
-									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
-					
-					// create an element with the IPSO resource description
-					xmlStreamWriter
-							.writeStartElement(getIPSOResourceName(ero2Resource
-									.getName())); //HARDCODED gpio??
-					xmlStreamWriter.writeStartElement("off");
-					xmlStreamWriter.writeAttribute("data_type", "true");
-					xmlStreamWriter.writeAttribute("interface_def", "a");
-					xmlStreamWriter.writeAttribute("interface_type",
-							getIPSOResourceType(ero2Resource.getName()));
-					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/mediate?service=" + serviceLocator + "&resource=" + ero2Resource.getName()+ "&status=off");
-					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", ero2Resource.getName() + " at UNIGE with NID: " + serviceLocator);
-					xmlStreamWriter.writeEndElement(); // closing /on
-					xmlStreamWriter.writeEndElement(); // closing /IPSO name
-														// description
-					xmlStreamWriter.writeEndElement(); // closing /resource
-														// description
-					
-					//sensor value(luminance)
-					xmlStreamWriter.writeStartElement("resource");
-					xmlStreamWriter.writeAttribute("max_reservations","1");
-					xmlStreamWriter.writeAttribute("component_manager_id",
-							"urn:publicid:iot-lab.eu+cm");
-					xmlStreamWriter.writeAttribute("exclusive", "true");
-					xmlStreamWriter.writeAttribute("component_id",
-							"urn:publicid:unige.ch+resource+"
-									+ ero2Resource.getName());
-					xmlStreamWriter.writeAttribute("NID", serviceLocator); //unique NodeID used to map with other services. It comes hardcoded on the node.
-					
-					// create an element with the IPSO resource description
-					xmlStreamWriter
-							.writeStartElement("sen");
-					xmlStreamWriter.writeStartElement("lum");
-					xmlStreamWriter.writeAttribute("data_type", "true");
-					xmlStreamWriter.writeAttribute("interface_def", "a");
-					xmlStreamWriter.writeAttribute("interface_type","ipso.sen.lum");
-					xmlStreamWriter.writeAttribute("path",
-							"/ero2proxy/monitor?service=" + serviceLocator);
-					//xmlStreamWriter.writeAttribute("name",getIPSOResourceType(ero2Resource.getName()) + "at UNIGE.ch" + serviceLocator);
-					xmlStreamWriter.writeAttribute("name", "luminance at UNIGE with NID: " + serviceLocator);
-					xmlStreamWriter.writeEndElement(); // closing /on
-					xmlStreamWriter.writeEndElement(); // closing /IPSO name
-														// description
-					xmlStreamWriter.writeEndElement(); // closing /resource
-														// description
-					}
-				}
-				xmlStreamWriter.writeEndElement(); // closing /node
-				
-			}
-			xmlStreamWriter.writeEndElement(); // closing /rspec
-			xmlStreamWriter.writeEndDocument(); // closing /document
+  @SuppressWarnings("unchecked")
+  public static String getUpdatesJSONString(String serviceLocator,
+      ErO2ServiceStatus status) {
+    JSONObject readings = new JSONObject();
+    readings.put("service", serviceLocator);
+    Enumeration<String> readingsKeys = status.getReadings().keys();
+    while (readingsKeys.hasMoreElements()) {
+      String key = readingsKeys.nextElement();
+      readings.put(key, status.getReadings().get(key));
+    }
 
-			xmlStreamWriter.flush();
-			xmlStreamWriter.close();
+    StringWriter out = new StringWriter();
+    try {
+      readings.writeJSONString(out);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    return jsonText;
+  }
 
-			String xmlString = stringWriter.getBuffer().toString();
+  @SuppressWarnings("unchecked")
+  public static String getTestbedSensorValuesJSONString(Hashtable<String, ErO2Service> serviceRegistry) {
 
-			stringWriter.close();
-			return xmlString;
-		} catch (XMLStreamException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+    Enumeration<String> serviceKeys = serviceRegistry.keys();
 
-	}
+    JSONObject finalJSON   = new JSONObject();
+    JSONArray servicesJSON = new JSONArray();
+    while (serviceKeys.hasMoreElements()) {
+      String serviceLocator = serviceKeys.nextElement();
+      ErO2Service ero2ser   = serviceRegistry.get(serviceLocator);
+      String luminance      = ero2ser.getLuminanceValue();
+      String temperature    = ero2ser.getTemperatureValue();
 
-	private String getIPSOResourceName(String localResourceName) {
 
-		if (localResourceName == "bulb")
-			return "lightcontrol";
-		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "light")
-			return "sen";
-		else
-			return "gpio";
+      JSONObject nodeJSON   = new JSONObject();
+      nodeJSON.put("node", serviceLocator);
+      nodeJSON.put("luminance", luminance);
+      nodeJSON.put("temperature", temperature);
+      servicesJSON.add(nodeJSON);
+    }
+    finalJSON.put("services", servicesJSON);
 
-	}
+    StringWriter out = new StringWriter();
+    try {
+      finalJSON.writeJSONString(out);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    String jsonText = out.toString();
+    System.out.println(jsonText);
+    return jsonText;
+  }
 
-	private String getIPSOResourceType(String localResourceName) {
-
-		if (localResourceName == "bulb")
-			return "ipso.lt.on";
-		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "light")
-			return "ipso.sen";
-		else
-			return "ipso.gpio.dout";
-
-	}
-
-	private String getIPSOResourcePath(String localResourceName) {
-
-		if (localResourceName == "bulb")
-			return "/lt/1/on";
-		else if (localResourceName == "temp" || localResourceName == "hum"
-				|| localResourceName == "light")
-			return "/sen";
-		else
-			return "/gpio/dout";
-
-	}
 }
