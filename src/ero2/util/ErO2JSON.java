@@ -109,7 +109,7 @@ public class ErO2JSON {
           nodeJSON.put("protocol", "coap");
           nodeJSON.put("ip", ip);
           String ss = myURL.toString();
-          nodeJSON.put("uri", ss);
+          nodeJSON.put("uri", "http://129.194.70.52:8011/ero2proxy");
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
@@ -169,7 +169,6 @@ public class ErO2JSON {
       e.printStackTrace();
     }
     String jsonText = out.toString();
-    System.out.println(jsonText);
     return jsonText;
   }
 
