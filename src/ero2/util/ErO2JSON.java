@@ -28,6 +28,7 @@ public class ErO2JSON {
 
     Enumeration<String> serviceKeys = serviceRegistry.keys();
     String ip = "129.194.70.52";
+    String url = "http://129.194.70.52:8011/ero2proxy";
     URIBuilder builder = null;
     URIBuilder uri_b = null;
     //uri_b.addParameter("t", "search");
@@ -51,7 +52,7 @@ public class ErO2JSON {
 //            .setParameter("btnG", "Google Search")
 //            .setParameter("aq", "f")
 //            .setParameter("oq", "");
-    myURL = "http://129.194.70.52:8011/ero2proxy";
+    myURL = new URL("http://129.194.70.52:8011/ero2proxy"); //UNUSED
     //uri_b = new URIBuilder("http://example.com");
     //urla = uri_b.build();
     //urla = builder.build();
@@ -107,7 +108,7 @@ public class ErO2JSON {
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "coap");
           nodeJSON.put("ip", ip);
-          nodeJSON.put("uri", myURL);
+          nodeJSON.put("uri", url);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
