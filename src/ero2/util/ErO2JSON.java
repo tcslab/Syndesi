@@ -51,7 +51,7 @@ public class ErO2JSON {
 //            .setParameter("btnG", "Google Search")
 //            .setParameter("aq", "f")
 //            .setParameter("oq", "");
-    myURL = new URL("http://129.194.70.52:8011/ero2proxy/");
+    myURL = new URL("http://129.194.70.52:8011/");
     //uri_b = new URIBuilder("http://example.com");
     //urla = uri_b.build();
     //urla = builder.build();
@@ -93,19 +93,29 @@ public class ErO2JSON {
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
 //!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
 //!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variables in fields node_id and unit! 
+          Boolean bulb=false;
           String node_id, unit;
           if (serviceLocator.length() > 6) {
         	node_id = serviceLocator.substring(0,4);
-        	unit = serviceLocator.substring(5);
+        	bulb = true;
           }
           else {
+        	  bulb = false;
         	  node_id = serviceLocator;
-        	  unit = "sensor-value";
+          }
+          if (serviceLocator.equals("C1S2A1")) {
+        	  bulb = true;
+          };
+          if (bulb) {
+        	  unit = "bulb-lightcontrol";
+          }
+          else {
+        	  unit = "curtain-control";
           }
 //!!! END OF HACK
           nodeJSON.put("hardware", "telosb");
           nodeJSON.put("node_id", node_id);
-          nodeJSON.put("protocol", "coap");
+          nodeJSON.put("protocol", "httpUnige");
           nodeJSON.put("ip", ip);
           nodeJSON.put("uri", myURL.toString());
           nodeJSON.put("hostname", hostname);
@@ -115,7 +125,7 @@ public class ErO2JSON {
           //actuation on
           JSONObject nodeResourceJSONactOn = new JSONObject();
           nodeResourceJSONactOn.put("data_type", "true");
-          nodeResourceJSONactOn.put("path", "mediate?service=" + node_id + "&resource=bulb&status=on");
+          nodeResourceJSONactOn.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=on");
           nodeResourceJSONactOn.put("type", "ipso.gpio.dout");
           nodeResourceJSONactOn.put("luminance", luminance);
           nodeResourceJSONactOn.put("temperature", temperature);
@@ -127,7 +137,7 @@ public class ErO2JSON {
         //actuation off
           JSONObject nodeResourceJSONactOff = new JSONObject();
           nodeResourceJSONactOff.put("data_type", "true");
-          nodeResourceJSONactOff.put("path", "mediate?service=" + node_id + "&resource=bulb&status=off");
+          nodeResourceJSONactOff.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=off");
           nodeResourceJSONactOff.put("type", "ipso.gpio.dout");
           nodeResourceJSONactOff.put("luminance", luminance);
           nodeResourceJSONactOff.put("temperature", temperature);
@@ -139,12 +149,12 @@ public class ErO2JSON {
         //luminance sensor
           JSONObject nodeResourceJSONlumSen = new JSONObject();
           nodeResourceJSONlumSen.put("data_type", "true");
-          nodeResourceJSONlumSen.put("path", "monitor?service=" + node_id);
-          nodeResourceJSONlumSen.put("type", "ipso.gpio.dout");
+          nodeResourceJSONlumSen.put("path", "ero2proxy/monitor?service=" + node_id);
+          nodeResourceJSONlumSen.put("type", "ipso.sen.lum");
           nodeResourceJSONlumSen.put("luminance", luminance);
           nodeResourceJSONlumSen.put("temperature", temperature);
           nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
-          nodeResourceJSONlumSen.put("unit", unit);
+          nodeResourceJSONlumSen.put("unit", "sensor-value");
           nodeJSON.put("resourcesnode", nodeResourceJSONlumSen);
           resourcesJSON.add(nodeJSON);
         }
@@ -173,8 +183,8 @@ public class ErO2JSON {
   @SuppressWarnings("unchecked")
   public static String getTestbedInfoJSONString(){
     String name      = "unigetestbed";
-    double longitude = 46.176685;
-    double latitude  = 6.140571;
+    double longitude = 46.1767058;
+    double latitude  = 6.1397209;
     String domain    = "iot.unige.ch:8111";
     JSONObject finalJSON = new JSONObject();
     finalJSON.put("name", name);
