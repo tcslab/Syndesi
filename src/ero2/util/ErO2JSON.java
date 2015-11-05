@@ -126,7 +126,7 @@ public class ErO2JSON {
           //actuation on
           JSONObject nodeResourceJSONactOn = new JSONObject();
           nodeResourceJSONactOn.put("data_type", "true");
-          nodeResourceJSONactOn.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=on");
+          nodeResourceJSONactOn.put("path", "/ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=on");
           nodeResourceJSONactOn.put("type", "ipso.gpio.dout");
           nodeResourceJSONactOn.put("luminance", luminance);
           nodeResourceJSONactOn.put("temperature", temperature);
@@ -147,7 +147,7 @@ public class ErO2JSON {
         //actuation off
           JSONObject nodeResourceJSONactOff = new JSONObject();
           nodeResourceJSONactOff.put("data_type", "true");
-          nodeResourceJSONactOff.put("path", "ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=off");
+          nodeResourceJSONactOff.put("path", "/ero2proxy/mediate?service=" + node_id + "&resource=bulb&status=off");
           nodeResourceJSONactOff.put("type", "ipso.gpio.dout");
           nodeResourceJSONactOff.put("luminance", luminance);
           nodeResourceJSONactOff.put("temperature", temperature);
@@ -168,7 +168,7 @@ public class ErO2JSON {
         //luminance sensor
           JSONObject nodeResourceJSONlumSen = new JSONObject();
           nodeResourceJSONlumSen.put("data_type", "true");
-          nodeResourceJSONlumSen.put("path", "ero2proxy/monitor?service=" + node_id);
+          nodeResourceJSONlumSen.put("path", "/ero2proxy/monitor?service=" + node_id);
           nodeResourceJSONlumSen.put("type", "ipso.sen.lum");
           nodeResourceJSONlumSen.put("luminance", luminance);
           nodeResourceJSONlumSen.put("temperature", temperature);
