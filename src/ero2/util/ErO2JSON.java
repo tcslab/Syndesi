@@ -159,15 +159,17 @@ public class ErO2JSON {
           nodeResourceJSONlumSen.put("unit", "sensor-value");
           nodeJSON.put("resourcesnode",nodeResourceJSONlumSen);
           resourcesJSON.add(nodeJSON);
+          
+          JSONObject serviceJSON = new JSONObject();
+          /*  serviceJSON.put("serviceID", serviceLocator); */
+           serviceJSON.put("resources", resourcesJSON);
+
+           servicesJSON.add(serviceJSON);
         }
       }
 
       // {service
-      JSONObject serviceJSON = new JSONObject();
-     /*  serviceJSON.put("serviceID", serviceLocator); */
-      serviceJSON.put("resources", resourcesJSON);
-
-      servicesJSON.add(serviceJSON);
+      
     }
     finalJSON.put("services", servicesJSON);
 
