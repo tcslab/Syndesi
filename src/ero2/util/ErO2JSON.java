@@ -122,6 +122,8 @@ public class ErO2JSON {
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
           
+          JSONArray nodeResourceArray = new JSONArray();
+          
           //actuation on
           JSONObject nodeResourceJSONactOn = new JSONObject();
           nodeResourceJSONactOn.put("data_type", "true");
@@ -131,7 +133,7 @@ public class ErO2JSON {
           nodeResourceJSONactOn.put("temperature", temperature);
           nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONactOn.put("unit", unit);
-          nodeJSON.put("resourcesnode1", nodeResourceJSONactOn);
+          nodeResourceArray.add(nodeResourceJSONactOn);
        
     
         //actuation off
@@ -143,8 +145,7 @@ public class ErO2JSON {
           nodeResourceJSONactOff.put("temperature", temperature);
           nodeResourceJSONactOff.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONactOff.put("unit", unit);
-          nodeJSON.put("resourcesnode2", nodeResourceJSONactOff);
-
+          nodeResourceArray.add(nodeResourceJSONactOff);
           
         //luminance sensor
           JSONObject nodeResourceJSONlumSen = new JSONObject();
@@ -155,8 +156,8 @@ public class ErO2JSON {
           nodeResourceJSONlumSen.put("temperature", temperature);
           nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONlumSen.put("unit", "sensor-value");
-          nodeJSON.put("resourcesnode3", nodeResourceJSONlumSen);
-          resourcesJSON.add(nodeJSON);
+          nodeResourceArray.add(nodeResourceJSONlumSen);
+          nodeJSON.put("resourcesnode",nodeResourceArray);
         }
       }
 
