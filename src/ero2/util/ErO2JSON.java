@@ -131,8 +131,8 @@ public class ErO2JSON {
           nodeResourceJSONactOn.put("temperature", temperature);
           nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONactOn.put("unit", unit);
-          nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
-          resourcesJSON.add(nodeJSON);
+          nodeJSON.put("resourcesnode1", nodeResourceJSONactOn);
+       
     
         //actuation off
           JSONObject nodeResourceJSONactOff = new JSONObject();
@@ -143,8 +143,8 @@ public class ErO2JSON {
           nodeResourceJSONactOff.put("temperature", temperature);
           nodeResourceJSONactOff.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONactOff.put("unit", unit);
-          nodeJSON.put("resourcesnode", nodeResourceJSONactOff);
-          resourcesJSON.add(nodeJSON);
+          nodeJSON.put("resourcesnode2", nodeResourceJSONactOff);
+
           
         //luminance sensor
           JSONObject nodeResourceJSONlumSen = new JSONObject();
@@ -155,7 +155,7 @@ public class ErO2JSON {
           nodeResourceJSONlumSen.put("temperature", temperature);
           nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
           nodeResourceJSONlumSen.put("unit", "sensor-value");
-          nodeJSON.put("resourcesnode", nodeResourceJSONlumSen);
+          nodeJSON.put("resourcesnode3", nodeResourceJSONlumSen);
           resourcesJSON.add(nodeJSON);
         }
       }
