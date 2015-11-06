@@ -117,7 +117,7 @@ public class ErO2JSON {
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "httpUnige");
           nodeJSON.put("ip", ip);
-          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("uri", ip);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
@@ -140,7 +140,7 @@ public class ErO2JSON {
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "httpUnige");
           nodeJSON.put("ip", ip);
-          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("uri", ip);
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
@@ -161,7 +161,7 @@ public class ErO2JSON {
           nodeJSON.put("node_id", node_id);
           nodeJSON.put("protocol", "httpUnige");
           nodeJSON.put("ip", ip);
-          nodeJSON.put("uri", myURL.toString());
+          nodeJSON.put("uri", ip); //put ip instead of myURL.tostring because getNodes() in sfawrap takes the ip from here..  
           nodeJSON.put("hostname", hostname);
           nodeJSON.put("type", "sensor-actuator");
           nodeJSON.put("port", "8111");
