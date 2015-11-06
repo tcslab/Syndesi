@@ -92,7 +92,7 @@ public class ErO2JSON {
           nodeJSON = new JSONObject();
           String hostname = "node_"+ero2Resource.getNumber()+".unige";
 //!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
-//!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variables in fields node_id and unit! 
+//!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variable in field node_id! 
           String node_id;
           if (serviceLocator.length() > 6) {
         	node_id = serviceLocator.substring(0,4);
@@ -122,7 +122,7 @@ public class ErO2JSON {
               nodeResourceJSONactOn.put("luminance", luminance);
               nodeResourceJSONactOn.put("temperature", temperature);
               nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - ON");
-              nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ "control");
+              nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ " control");
               nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
               resourcesJSON.add(nodeJSON);
            
@@ -144,7 +144,7 @@ public class ErO2JSON {
 	          nodeResourceJSONactOff.put("luminance", luminance);
 	          nodeResourceJSONactOff.put("temperature", temperature);
 	          nodeResourceJSONactOff.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - OFF");
-	          nodeResourceJSONactOff.put("unit", ero2Resource.getName()+ "control");
+	          nodeResourceJSONactOff.put("unit", ero2Resource.getName()+ " control");
 	          nodeJSON.put("resourcesnode", nodeResourceJSONactOff);
 	          resourcesJSON.add(nodeJSON);
 	          
@@ -166,7 +166,7 @@ public class ErO2JSON {
 	          nodeResourceJSONactTog.put("luminance", luminance);
 	          nodeResourceJSONactTog.put("temperature", temperature);
 	          nodeResourceJSONactTog.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - TOGGLE");
-	          nodeResourceJSONactTog.put("unit", ero2Resource.getName()+ "control");
+	          nodeResourceJSONactTog.put("unit", ero2Resource.getName()+ " control");
 	          nodeJSON.put("resourcesnode", nodeResourceJSONactTog);
 	          resourcesJSON.add(nodeJSON);
               }
@@ -191,7 +191,7 @@ public class ErO2JSON {
 		          nodeResourceJSONactOn.put("luminance", luminance);
 		          nodeResourceJSONactOn.put("temperature", temperature);
 		          nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - ON");
-		          nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ "control");
+		          nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ " control");
 		          nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
 		          resourcesJSON.add(nodeJSON);
           	}
@@ -214,7 +214,7 @@ public class ErO2JSON {
 		          nodeResourceJSONactOn.put("luminance", luminance);
 		          nodeResourceJSONactOn.put("temperature", temperature);
 		          nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - ON");
-		          nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ "control");
+		          nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ " control");
 		          nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
 		          resourcesJSON.add(nodeJSON);
 		          
@@ -236,7 +236,7 @@ public class ErO2JSON {
 			          nodeResourceJSONactOff.put("luminance", luminance);
 			          nodeResourceJSONactOff.put("temperature", temperature);
 			          nodeResourceJSONactOff.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - OFF");
-			          nodeResourceJSONactOff.put("unit", ero2Resource.getName()+ "control");
+			          nodeResourceJSONactOff.put("unit", ero2Resource.getName()+ " control");
 			          nodeJSON.put("resourcesnode", nodeResourceJSONactOff);
 			          resourcesJSON.add(nodeJSON);
 		          
