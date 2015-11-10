@@ -254,7 +254,7 @@ public class ErO2JSON {
 		  JSONObject nodeResourceJSONlumSen = new JSONObject();
 		  nodeResourceJSONlumSen.put("data_type", "true");
 		  nodeResourceJSONlumSen.put("path", "/ero2proxy/monitor?service=" + node_id);
-		  nodeResourceJSONlumSen.put("type", "ipso.sen.lum");
+		  nodeResourceJSONlumSen.put("type", "ipso.sen.il");
 		  nodeResourceJSONlumSen.put("luminance", luminance);
 		  nodeResourceJSONlumSen.put("temperature", temperature);
 		  nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
