@@ -94,6 +94,7 @@ public class ErO2JSON {
 //!!!HACK to get either e.g. C1S2A1 or parse e.g D1S1-bulb-lightcontrol 
 //!!!TO DO: CHANGE THE ACTUAL serviceLocator values and then restore the assignment variable in field node_id! If e.g. a door sensor is added to the system the resources will come out wrong!
           String temp_link_TOCHANGE = serviceLocator;
+          String node_id;
           if (serviceLocator.length() > 6) {
         	node_id = serviceLocator.substring(0,4);
           }
