@@ -122,7 +122,7 @@ public class ErO2JSON {
               nodeResourceJSONactOn.put("type", "ipso.gpio.dout");
               nodeResourceJSONactOn.put("luminance", luminance);
               nodeResourceJSONactOn.put("temperature", temperature);
-              nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - up");
+              nodeResourceJSONactOn.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id + " - UP");
               nodeResourceJSONactOn.put("unit", ero2Resource.getName()+ " control");
               nodeJSON.put("resourcesnode", nodeResourceJSONactOn);
               resourcesJSON.add(nodeJSON);
