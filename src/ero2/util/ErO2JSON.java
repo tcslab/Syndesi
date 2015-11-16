@@ -96,7 +96,7 @@ public class ErO2JSON {
           String temp_link_TOCHANGE = serviceLocator;
           String node_id;
           if (serviceLocator.length() > 6) {
-        	node_id = serviceLocator.substring(0,4);
+        	node_id = serviceLocator.substring(0,5);
           }
           else {
         	  node_id = serviceLocator;
@@ -255,7 +255,7 @@ public class ErO2JSON {
 		  JSONObject nodeResourceJSONlumSen = new JSONObject();
 		  nodeResourceJSONlumSen.put("data_type", "true");
 		  nodeResourceJSONlumSen.put("path", "/ero2proxy/monitor?service=" + temp_link_TOCHANGE);
-		  nodeResourceJSONlumSen.put("type", "ipso.sen.il");
+		  nodeResourceJSONlumSen.put("type", "ipso.sen.ill");
 		  nodeResourceJSONlumSen.put("luminance", luminance);
 		  nodeResourceJSONlumSen.put("temperature", temperature);
 		  nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
