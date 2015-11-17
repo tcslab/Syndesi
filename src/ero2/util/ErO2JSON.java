@@ -259,7 +259,7 @@ public class ErO2JSON {
 		  nodeResourceJSONlumSen.put("luminance", luminance);
 		  nodeResourceJSONlumSen.put("temperature", temperature);
 		  nodeResourceJSONlumSen.put("name", ero2Resource.getName() + " at UNIGE with NID: " + node_id);
-		  nodeResourceJSONlumSen.put("unit", "sensor-value");
+		  nodeResourceJSONlumSen.put("unit", "lux");
 		  nodeJSON.put("resourcesnode",nodeResourceJSONlumSen);
 		  resourcesJSON.add(nodeJSON);
           
