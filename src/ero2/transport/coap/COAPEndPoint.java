@@ -19,8 +19,8 @@ import ero2.resource.rest.ServiceRegistryResource;
 public class COAPEndPoint extends ServerEndpoint {
 	
 	//define here time of first check and check interval in milliseconds, when checking for expired resources
-	public static int FIRST_CHECK_OFFSET =180000; //3 min 
-	public static int CHECK_INTERVAL = 60000;  //1 min
+	public static int FIRST_CHECK_OFFSET =300000; //5 min 
+	public static int CHECK_INTERVAL = 180000;  //3 min
 
 	public COAPEndPoint() throws SocketException {
 		// Initializes ErO2 services
@@ -48,7 +48,7 @@ public class COAPEndPoint extends ServerEndpoint {
 		        	    	  String serviceLocator = serviceKeys.nextElement();
 			        	      ErO2Service ero2ser = registry.get(serviceLocator);
 			        	      String now = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			        	      if (!(now.substring(0, 15).equals(ero2ser.getTimestamp().substring(0, 15)))) { //HACK to check the date strings are equal until the desired accuracy - right now set to the hour
+			        	      if (!(now.substring(0, 13).equals(ero2ser.getTimestamp().substring(0, 13)))) { //HACK to check the date strings are equal until the desired accuracy - right now set to the hour
 			        	    	  registry.remove(serviceLocator);
 			        	    	  System.out.println("Sensor " + serviceLocator + " was no longer reporting and has been removed from registry");
 			        	      	  } 
