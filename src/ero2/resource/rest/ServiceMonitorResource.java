@@ -17,6 +17,8 @@ import ero2.core.ErO2ServiceStatus;
 import ero2.transport.coap.ErO2Utils;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ServiceMonitorResource extends LocalResource {
 
@@ -55,7 +57,7 @@ public class ServiceMonitorResource extends LocalResource {
     System.out.println(sensorReadings);
 
     System.out.println("Hearbeat receving from " + serviceLocator
-        + " with light" + " temp");
+        + " with light" + " temp" + "and timestamp");
 
     if (ERO2REGISTRY.searchService(serviceLocator) != null) {
 
@@ -64,7 +66,7 @@ public class ServiceMonitorResource extends LocalResource {
       status.setIPAddr(ipaddr);
 
       int i = 1;
-      String lum = "", temp = "";
+      String lum = "", temp = "", timestamp = "";
 
       // updates the service monitor registry
       StringTokenizer tokenizer = new StringTokenizer(sensorReadings,
@@ -85,8 +87,11 @@ public class ServiceMonitorResource extends LocalResource {
         }
         i++;
       }
+  	  timestamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+      status.setReading("timestamp", timestamp);
+      System.out.println("timestamp" + timestamp);      
 
-      ERO2REGISTRY.updateService(serviceLocator, lum, temp);
+      ERO2REGISTRY.updateService(serviceLocator, lum, temp, timestamp);
 
       ERO2REGISTRY.updateStatus(serviceLocator, status);
       System.out.println("Ero2 service updated " + serviceLocator + " "
@@ -95,7 +100,7 @@ public class ServiceMonitorResource extends LocalResource {
       if(serviceLocator.contains("-")){
         serviceLocator = serviceLocator.substring(serviceLocator.indexOf('-'),-1);
       }
-      this.updateSensors(serviceLocator,new Integer(lum),new Integer(temp));
+      this.updateSensors(serviceLocator,new Integer(lum),new Integer(temp), timestamp);
 
       response.setContentType(MediaTypeRegistry.TEXT_PLAIN);
       request.respond(response);
@@ -106,9 +111,9 @@ public class ServiceMonitorResource extends LocalResource {
     }
   }
 
-  private void updateSensors(String incoming_locator, int luminance,int temperature){
+  private void updateSensors(String incoming_locator, int luminance, int temperature, String timestamp){
 
-    System.out.println("Salut maman; ServiceLocator = "+ incoming_locator+ "; Luminance= "+ luminance+"; Temperature= "+ temperature);
+    System.out.println("Salut maman; ServiceLocator = "+ incoming_locator+ "; Luminance= "+ luminance+"; Temperature= "+ temperature +"; Timestamp= "+ timestamp);
     Hashtable<String, ErO2Service> serviceRegistry=ERO2REGISTRY.allServices();
     Enumeration<String> serviceKeys = serviceRegistry.keys();
 
