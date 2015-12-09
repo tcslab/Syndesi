@@ -95,7 +95,7 @@ public class ServiceMonitorResource extends LocalResource {
 
       ERO2REGISTRY.updateStatus(serviceLocator, status);
       System.out.println("Ero2 service updated " + serviceLocator + " "
-          + ipaddr + " " + lum + " " + temp);
+          + ipaddr + " " + lum + " " + temp + " at " + timestamp);
       //B1S2-bulb-lightcontrol|388|22|���[�e
       if(serviceLocator.contains("-")){
         serviceLocator = serviceLocator.substring(serviceLocator.indexOf('-'),-1);
