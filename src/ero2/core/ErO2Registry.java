@@ -30,10 +30,11 @@ public final class ErO2Registry {
     return registry.get(serviceLocator);
   }
 
-  public void updateService(String serviceLocator,String luminance, String temperature){
+  public void updateService(String serviceLocator,String luminance, String temperature, String timestamp){
     ErO2Service ero2ser = registry.get(serviceLocator);
     ero2ser.setLuminance(luminance);
     ero2ser.setTemperature(temperature);
+    er02ser.setTimestamp(timestamp)
     registry.put(serviceLocator,ero2ser);
     // Logger logger = Logger.getLogger("AliLogger");
     // logger.log(Level.SEVERE, "ALI|ErO2Registry|registry.get("+serviceLocator+").getTemperatureValue: "+registry.get(serviceLocator).getTemperatureValue());
