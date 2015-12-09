@@ -8,6 +8,7 @@ public class ErO2Service {
   private String luminance_value;
   private String temperature_value;
   private String humidity_value;
+  private String timestamp;
   Vector<ErO2Resource> resources = new Vector<ErO2Resource>();
 
   public static String DELIMITER = "|";
@@ -21,6 +22,7 @@ public class ErO2Service {
     this.ipaddr = ipaddr;
     this.luminance_value = null;
     this.temperature_value = null;
+    this.timestamp = null;
   }
 
   public void addResource(ErO2Resource resource) {
@@ -61,13 +63,21 @@ public class ErO2Service {
   public String getTemperatureValue() {
     return temperature_value;
   }
-
+  
+  public String getTimestamp(){
+    return timestamp;
+  }
+  
   public void setLuminance(String luminance_value){
     this.luminance_value = luminance_value;
   }
 
   public void setTemperature(String temperature_value){
     this.temperature_value = temperature_value;
+  }
+  
+  public void setTimestamp (String timestamp) {
+    this.timestamp = timestamp;
   }
 
   public String getSerialization() {
