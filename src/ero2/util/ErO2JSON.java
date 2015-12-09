@@ -81,6 +81,7 @@ public class ErO2JSON {
       ErO2Service service = serviceRegistry.get(serviceLocator);
       String luminance      = service.getLuminanceValue();
       String temperature    = service.getTemperatureValue();
+      String timestamp	    = service.getTimestamp();
       // []
       Vector<ErO2Resource> resources = service.getResources();
       JSONArray resourcesJSON = new JSONArray();
@@ -252,6 +253,7 @@ public class ErO2JSON {
 		  nodeJSON.put("port", "8111");
 		//luminance sensor
 		  JSONObject nodeResourceJSONlumSen = new JSONObject();
+		  nodeResourceJSONlumSen.put("timestamp", timestamp);
 		  nodeResourceJSONlumSen.put("data_type", "true");
 		  nodeResourceJSONlumSen.put("path", "/ero2proxy/monitor?service=" + node_id);
 		  nodeResourceJSONlumSen.put("type", "ipso.sen.lum");
