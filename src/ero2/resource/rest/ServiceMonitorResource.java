@@ -57,7 +57,7 @@ public class ServiceMonitorResource extends LocalResource {
     System.out.println(sensorReadings);
 
     System.out.println("Hearbeat receving from " + serviceLocator
-        + " with light" + " temp" + "and timestamp");
+        + " with light" + " temp");
 
     if (ERO2REGISTRY.searchService(serviceLocator) != null) {
 
