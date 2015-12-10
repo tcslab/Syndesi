@@ -19,8 +19,8 @@ import ero2.resource.rest.ServiceRegistryResource;
 public class COAPEndPoint extends ServerEndpoint {
 	
 	//define here time of first check and check interval in milliseconds, when checking for expired resources
-	public static int FIRST_CHECK_OFFSET =300000; //5 min 
-	public static int CHECK_INTERVAL = 180000;  //3 min
+	public static int FIRST_CHECK_OFFSET =7200000; //2 hours
+	public static int CHECK_INTERVAL = 3600000; //1 hour
 	public static int ALIVE_THRESHOLD = 3600000; //1 hour
 
 	public COAPEndPoint() throws SocketException {
