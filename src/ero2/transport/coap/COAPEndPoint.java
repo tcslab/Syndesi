@@ -30,7 +30,9 @@ public class COAPEndPoint extends ServerEndpoint {
 		serviceRegistry.setCOAPEndPoint(this);
 		
 		// Add monitor service
+	
 		ServiceMonitorResource monitorRegistry = new ServiceMonitorResource();
+		System.out.println("SERVICE_MONITOR_RESOURCE CREATED");
 		addResource(monitorRegistry);
 		
 		// Launch task periodically to check for sensors no longer reporting and remove them from registry
