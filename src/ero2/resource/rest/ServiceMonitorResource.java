@@ -42,6 +42,7 @@ public class ServiceMonitorResource extends LocalResource {
     String ipaddr = request.sequenceKey().substring(0,
         sqkey.lastIndexOf(':'));
     String payloadString = request.getPayloadString();
+    System.out.println("THIS IS THE PAYLOAD" + payloadString);
     //payloadString => B1S1-bulb-lightcontrol|334|22|���RP�D�4[.`�
     String serviceLocator = payloadString.substring(0, payloadString.indexOf(ErO2Service.DELIMITER));
 
