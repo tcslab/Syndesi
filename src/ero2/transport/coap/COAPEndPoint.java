@@ -50,7 +50,7 @@ public class COAPEndPoint extends ServerEndpoint {
 			        	      ErO2Service ero2ser = registry.get(serviceLocator);
 			        	      String now = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			        	      //check if the date strings are equal until the desired accuracy
-			        	      if (secondsOfDate(now)-secondsOfDate(date2) > ALIVE_THRESHOLD) { 
+			        	      if (secondsOfDate(now)-secondsOfDate(ero2ser.getTimestamp()) > ALIVE_THRESHOLD) { 
 			        	    	  registry.remove(serviceLocator);
 			        	    	  System.out.println("Sensor " + serviceLocator + " was no longer reporting and has been removed from registry");
 			        	      	  } 
