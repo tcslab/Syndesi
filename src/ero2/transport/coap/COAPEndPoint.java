@@ -52,7 +52,7 @@ public class COAPEndPoint extends ServerEndpoint {
 			        	      ErO2Service ero2ser = registry.get(serviceLocator);
 			        	      String now = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 			        	      //check if the date strings are equal until the desired accuracy
-			        	      if (secondsOfDate(now)-secondsOfDate(ero2ser.getTimestamp()) > ALIVE_THRESHOLD) { 
+			        	      if (millisOfDate(now)-millisOfDate(ero2ser.getTimestamp()) > ALIVE_THRESHOLD) { 
 			        	    	  registry.remove(serviceLocator);
 			        	    	  System.out.println("Sensor " + serviceLocator + " was no longer reporting and has been removed from registry");
 			        	      	  } 
@@ -68,15 +68,15 @@ public class COAPEndPoint extends ServerEndpoint {
 		    CHECK_INTERVAL); 
 	}
 	
-	public static long secondsOfDate(String date) {
+	public static long millisOfDate(String date) {
 		int seconds = Integer.valueOf(date.substring(17,19));
 		int minutes = Integer.valueOf(date.substring(14,16));
 		int hours = Integer.valueOf(date.substring(11,13));
 		int days = Integer.valueOf(date.substring(8,10));
 		int months = Integer.valueOf(date.substring(5,7));
 		int years = Integer.valueOf(date.substring(0,4));
-		long totalSeconds = seconds + minutes*60 + hours*3600 + days*86400 + months*2592000 + years*31104000;
-		return totalSeconds;
+		long totalMilliseconds = (seconds + minutes*60 + hours*3600 + days*86400 + months*2592000 + years*31104000) * 1000;
+		return totalMilliseconds;
 	}
 	
 	public void handleRequest(Request request) {
